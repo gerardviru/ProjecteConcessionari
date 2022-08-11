@@ -71,6 +71,10 @@ public class Venta {
 	@JoinColumn(name = "idpk_venta")
 	private Vehicle vehicle;
 	
+	@ManyToOne
+	@JoinColumn(name = "idpk_venta")
+	private Treballador treballador;
+	
 	
 	public Venta() {
 		

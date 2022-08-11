@@ -50,6 +50,10 @@ public class Client {
 	@JoinColumn(name = "idfk_client")
 	private List<Venta> venta;
 	
+	@ManyToOne
+	@JoinColumn(name = "idpk_persona")
+	private Persona persona;
+	
 	public Client() {
 	}
 
