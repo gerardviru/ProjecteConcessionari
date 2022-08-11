@@ -21,28 +21,26 @@ public class UsuariServiceImpl implements IUsuariService{
 	}
 
 	@Override
-	public Usuari guardarUsuari(Usuari usuari) {
+	public Usuari saveUsuari(Usuari usuari) {
 		// TODO Auto-generated method stub
 		return iUsuariDAO.save(usuari);
 	}
 
 	@Override
-	public Usuari usuariID(Long IDPK_USUARI) {
+	public Usuari getById(Long IDPK_USUARI) {
 		// TODO Auto-generated method stub
 		return iUsuariDAO.findById(IDPK_USUARI).get();
 	}
 
 	@Override
-	public Usuari actualizarUsuari(Usuari usuari) {
+	public Usuari updateUsuari(Usuari usuari) {
 		// TODO Auto-generated method stub
 		return iUsuariDAO.save(usuari);
 	}
 
 	@Override
-	public void eliminarUsuari(Long IDPK_USUARI) {
+	public void deleteUsuari(Long IDPK_USUARI) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 }

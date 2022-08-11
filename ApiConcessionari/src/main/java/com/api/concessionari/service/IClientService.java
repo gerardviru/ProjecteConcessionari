@@ -9,15 +9,15 @@ public interface IClientService {
 		public List<Client> listarClient();  
 		
 		//Guarda un Cuenta CREATE
-		public Client guardarClient(Client client);
+		public Client saveClient(Client client);
 		
 		//Leer datos de un Cuenta READ
-		public Client personasXID(Long IDPK_CLIENT); 
+		public Client getById(Long IDPK_CLIENT); 
 		
 		//Actualiza datos del cuentas UPDATE
-		public Client actualizarClient(Client client); 
+		public Client updateClient(Client client); 
 		
 		// Elimina el cuentas DELETE
-		public void eliminarClient(Long IDPK_CLIENT);
+		public void deleteClient(Long IDPK_CLIENT);
 		
 }

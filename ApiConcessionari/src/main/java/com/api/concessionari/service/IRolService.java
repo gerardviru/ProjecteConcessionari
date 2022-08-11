@@ -12,17 +12,17 @@ public interface IRolService {
 						
 						
 	//Guardar
-	public Rol guardarRol(Rol rol);
+	public Rol saveRol(Rol rol);
 						
 				
 	//Leer por id
-	public Rol rolID(Long IDPK_ROL);
+	public Rol getById(Long IDPK_ROL);
 						
 						
 	//Actualizar
-	public Rol actualizarRol(Rol rol);
+	public Rol updateRol(Rol rol);
 						
 						
 	//Elimina la reserva
-	public void eliminarRol(Long IDPK_ROL);
+	public void deleteRol(Long IDPK_ROL);
 }

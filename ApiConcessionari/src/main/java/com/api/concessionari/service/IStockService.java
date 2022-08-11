@@ -12,18 +12,18 @@ public interface IStockService {
 						
 		
 		//Guardar
-		public Stock guardarStock(Stock stock);
+		public Stock saveStock(Stock stock);
 						
 				
 		//Leer por id
-		public Stock stockID(Long IDPK_STOCK);
+		public Stock getById(Long IDPK_STOCK);
 						
 						
 		//Actualizar
-		public Stock actualizarStock(Stock stock);
+		public Stock updateStock(Stock stock);
 						
 						
 		//Elimina la reserva
-		public void eliminarStock(Long IDPK_STOCK);
+		public void deleteStock(Long IDPK_STOCK);
 
 }

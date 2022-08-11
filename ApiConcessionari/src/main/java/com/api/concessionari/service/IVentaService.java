@@ -7,22 +7,22 @@ import com.api.concessionari.dto.Venta;
 public interface IVentaService {
 	
 	//Lista de reservas
-		public List <Venta> listarUsuari();
+		public List <Venta> listarVenta();
 						
 		
 		//Guardar
-		public Venta guardarUsuari(Venta venta);
+		public Venta saveVenta(Venta venta);
 						
 				
 		//Leer por id
-		public Venta ventaID(Long IDPK_VENTA);
+		public Venta getById(Long IDPK_VENTA);
 						
 						
 		//Actualizar
-		public Venta actualizarVenta(Venta venta);
+		public Venta updateVenta(Venta venta);
 						
 						
 		//Elimina la reserva
-		public void eliminarVenta(Long IDPK_VENTA);
+		public void deleteVenta(Long IDPK_VENTA);
 
 }

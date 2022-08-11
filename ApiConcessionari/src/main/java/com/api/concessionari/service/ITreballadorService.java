@@ -12,18 +12,18 @@ public interface ITreballadorService {
 				
 				
 	//Guardar
-	public Treballador guardarTreballador(Treballador treballador);
+	public Treballador saveTreballador(Treballador treballador);
 				
 		
 	//Leer por id
-	public Treballador treballadorID(Long IDPK_TREB);
+	public Treballador getById(Long IDPK_TREB);
 				
 				
 	//Actualizar
-	public Treballador actualizarTreballador(Treballador treballador);
+	public Treballador updateTreballador(Treballador treballador);
 				
 				
 	//Elimina la reserva
-	public void eliminarTreballador(Long IDPK_PROV);
+	public void deleteTreballador(Long IDPK_TREB);
 	
 }

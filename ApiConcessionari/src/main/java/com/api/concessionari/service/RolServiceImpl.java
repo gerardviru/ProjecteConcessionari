@@ -21,28 +21,27 @@ public class RolServiceImpl implements IRolService{
 	}
 
 	@Override
-	public Rol guardarRol(Rol rol) {
+	public Rol saveRol(Rol rol) {
 		// TODO Auto-generated method stub
 		return iRolDAO.save(rol);
 	}
 
 	@Override
-	public Rol rolID(Long IDPK_ROL) {
+	public Rol getById(Long IDPK_ROL) {
 		// TODO Auto-generated method stub
 		return iRolDAO.findById(IDPK_ROL).get();
 	}
 	
 	@Override
-	public Rol actualizarRol(Rol rol) {
+	public Rol updateRol(Rol rol) {
 		// TODO Auto-generated method stub
 		return iRolDAO.save(rol);
 	}
 
 	@Override
-	public void eliminarRol(Long IDPK_ROL) {
+	public void deleteRol(Long IDPK_ROL) {
 		// TODO Auto-generated method stub
 		
 	}
-	
 
 }

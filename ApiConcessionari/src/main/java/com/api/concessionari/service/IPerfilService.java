@@ -10,19 +10,19 @@ public interface IPerfilService {
 						
 		
 		//Guardar
-		public Perfil guardarPerfil(Perfil perfil);
+		public Perfil savePerfil(Perfil perfil);
 						
 				
 		//Leer por id
-		public Perfil perfilID(Long IDPK_PERFIL);
+		public Perfil getById(Long IDPK_PERFIL);
 						
 						
 		//Actualizar
-		public Perfil actualizarPerfil(Perfil perfil);
+		public Perfil updatePerfil(Perfil perfil);
 						
 						
 		//Elimina la reserva
-		public void eliminarPerfil(Long IDPK_PERFIL);
+		public void deletePerfil(Long IDPK_PERFIL);
 	
 	
 }

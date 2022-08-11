@@ -11,18 +11,18 @@ public interface IUsuariService {
 					
 	
 	//Guardar
-	public Usuari guardarUsuari(Usuari usuari);
+	public Usuari saveUsuari(Usuari usuari);
 					
 			
 	//Leer por id
-	public Usuari usuariID(Long IDPK_USUARI);
+	public Usuari getById(Long IDPK_USUARI);
 					
 					
 	//Actualizar
-	public Usuari actualizarUsuari(Usuari usuari);
+	public Usuari updateUsuari(Usuari usuari);
 					
 					
 	//Elimina la reserva
-	public void eliminarUsuari(Long IDPK_USUARI);
+	public void deleteUsuari(Long IDPK_USUARI);
 	
 }

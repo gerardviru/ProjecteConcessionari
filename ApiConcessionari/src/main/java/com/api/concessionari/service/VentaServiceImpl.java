@@ -15,34 +15,35 @@ public class VentaServiceImpl implements IVentaService{
 	IVentaDAO iVentaDAO;
 
 	@Override
-	public List<Venta> listarUsuari() {
+	public List<Venta> listarVenta() {
 		// TODO Auto-generated method stub
 		return iVentaDAO.findAll();
 	}
 
 	@Override
-	public Venta guardarUsuari(Venta venta) {
+	public Venta saveVenta(Venta venta) {
 		// TODO Auto-generated method stub
 		return iVentaDAO.save(venta);
 	}
 
 	@Override
-	public Venta ventaID(Long IDPK_VENTA) {
+	public Venta getById(Long IDPK_VENTA) {
 		// TODO Auto-generated method stub
 		return iVentaDAO.findById(IDPK_VENTA).get();
 	}
 
 	@Override
-	public Venta actualizarVenta(Venta venta) {
+	public Venta updateVenta(Venta venta) {
 		// TODO Auto-generated method stub
 		return iVentaDAO.save(venta);
 	}
 
 	@Override
-	public void eliminarVenta(Long IDPK_VENTA) {
+	public void deleteVenta(Long IDPK_VENTA) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 	
 }

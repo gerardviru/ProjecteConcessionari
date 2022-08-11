@@ -47,14 +47,14 @@ import com.api.concessionari.service.ProvinciaServiceImpl;
 	
 	// Update Provincia
 	@PutMapping("/provincia/{id}")
-	public Provincia updateProvincia(@PathVariable(name = "id") Long idpk_con, @RequestBody Provincia provincia) {
+	public Provincia updateProvincia(@PathVariable(name = "id") Long idpk_prov, @RequestBody Provincia provincia) {
 
 		Provincia provincia_seleccionada = new Provincia();
 		Provincia provincia_actualizada = new Provincia();
 		
 		System.out.println(provincia.toString());
 
-		provincia_seleccionada = provinciaServiceImpl.getById(idpk_con);
+		provincia_seleccionada = provinciaServiceImpl.getById(idpk_prov);
 
 		if(provincia.getNom_prov()!= null) {
 			provincia_seleccionada.setNom_prov(provincia.getNom_prov());			
@@ -69,8 +69,8 @@ import com.api.concessionari.service.ProvinciaServiceImpl;
 
 	// Delete provincia
 	@DeleteMapping("/provincia/{id}")
-	public void deleteProvincia(@PathVariable(name = "id") Long idpk_con) {
-			provinciaServiceImpl.deleteProvincia(idpk_con);
+	public void deleteProvincia(@PathVariable(name = "id") Long idpk_prov) {
+			provinciaServiceImpl.deleteProvincia(idpk_prov);
 	}
 	
 }

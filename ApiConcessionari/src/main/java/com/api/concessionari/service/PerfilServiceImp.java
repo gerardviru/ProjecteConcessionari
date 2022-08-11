@@ -20,28 +20,29 @@ public class PerfilServiceImp implements IPerfilService{
 	}
 
 	@Override
-	public Perfil guardarPerfil(Perfil perfil) {
+	public Perfil savePerfil(Perfil perfil) {
 		// TODO Auto-generated method stub
 		return iPerfilDAO.save(perfil);
 	}
 
 	@Override
-	public Perfil perfilID(Long IDPK_PERFIL) {
+	public Perfil getById(Long IDPK_PERFIL) {
 		// TODO Auto-generated method stub
 		return iPerfilDAO.findById(IDPK_PERFIL).get();
 	}
 
 	@Override
-	public Perfil actualizarPerfil(Perfil perfil) {
+	public Perfil updatePerfil(Perfil perfil) {
 		// TODO Auto-generated method stub
 		return iPerfilDAO.save(perfil);
 	}
 
 	@Override
-	public void eliminarPerfil(Long IDPK_PERFIL) {
+	public void deletePerfil(Long IDPK_PERFIL) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 	
 }

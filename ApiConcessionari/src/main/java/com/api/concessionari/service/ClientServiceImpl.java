@@ -19,25 +19,25 @@ public class ClientServiceImpl implements IClientService{
 	}
 
 	@Override
-	public Client guardarClient(Client client) {
+	public Client saveClient(Client client) {
 		// TODO Auto-generated method stub
 		return iClientDAO.save(client);
 	}
 
 	@Override
-	public Client personasXID(Long IDPK_CLIENT) {
+	public Client getById(Long IDPK_CLIENT) {
 		// TODO Auto-generated method stub
 		return iClientDAO.findById(IDPK_CLIENT).get();
 	}
 
 	@Override
-	public Client actualizarClient(Client client) {
+	public Client updateClient(Client client) {
 		// TODO Auto-generated method stub
 		return iClientDAO.save(client);
 	}
 
 	@Override
-	public void eliminarClient(Long IDPK_CLIENT) {
+	public void deleteClient(Long IDPK_CLIENT) {
 		// TODO Auto-generated method stub
 		
 	}

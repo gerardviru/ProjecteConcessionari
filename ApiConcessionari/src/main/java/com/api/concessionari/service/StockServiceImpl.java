@@ -22,25 +22,25 @@ public class StockServiceImpl implements IStockService{
 	}
 
 	@Override
-	public Stock guardarStock(Stock stock) {
+	public Stock saveStock(Stock stock) {
 		// TODO Auto-generated method stub
 		return iStockDAO.save(stock);
 	}
 
 	@Override
-	public Stock stockID(Long IDPK_STOCK) {
+	public Stock getById(Long IDPK_STOCK) {
 		// TODO Auto-generated method stub
 		return iStockDAO.findById(IDPK_STOCK).get();
 	}
 
 	@Override
-	public Stock actualizarStock(Stock stock) {
+	public Stock updateStock(Stock stock) {
 		// TODO Auto-generated method stub
 		return iStockDAO.save(stock);
 	}
 
 	@Override
-	public void eliminarStock(Long IDPK_STOCK) {
+	public void deleteStock(Long IDPK_STOCK) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -21,26 +21,27 @@ public class VehicleServiceImpl implements IVehicleService{
 	}
 
 	@Override
-	public Vehicle guardarVehicle(Vehicle vehicle) {
+	public Vehicle saveVehicle(Vehicle vehicle) {
 		// TODO Auto-generated method stub
 		return iVehicleDAO.save(vehicle);
 	}
 
 	@Override
-	public Vehicle vehicleID(Long IDPK_VEHICLE) {
+	public Vehicle getById(Long IDPK_VEHICLE) {
 		// TODO Auto-generated method stub
 		return iVehicleDAO.findById(IDPK_VEHICLE).get();
 	}
 
 	@Override
-	public Vehicle actualizarVehicle(Vehicle vehicle) {
+	public Vehicle updateVehicle(Vehicle vehicle) {
 		// TODO Auto-generated method stub
 		return iVehicleDAO.save(vehicle);
 	}
 
 	@Override
-	public void eliminarVehicle(Long IDPK_VEHICLE) {
+	public void deleteVehicle(Long IDPK_VEHICLE) {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

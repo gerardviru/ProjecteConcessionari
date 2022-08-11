@@ -20,25 +20,25 @@ public class PersonaServiceImpl implements IPersonaService{
 	}
 
 	@Override
-	public Persona guardarPersona(Persona persona) {
+	public Persona savePersona(Persona persona) {
 		// TODO Auto-generated method stub
 		return iPersonaDAO.save(persona);
 	}
 
 	@Override
-	public Persona personasXID(Long IDPK_PERSONA) {
+	public Persona getById(Long IDPK_PERSONA) {
 		// TODO Auto-generated method stub
 		return iPersonaDAO.findById(IDPK_PERSONA).get();
 	}
 
 	@Override
-	public Persona actualizarPersona(Persona persona) {
+	public Persona updatePersona(Persona persona) {
 		// TODO Auto-generated method stub
 		return iPersonaDAO.save(persona);
 	}
 
 	@Override
-	public void eliminarPersona(Long IDPK_PERSONA) {
+	public void deletePersona(Long IDPK_PERSONA) {
 		// TODO Auto-generated method stub
 		
 	}
