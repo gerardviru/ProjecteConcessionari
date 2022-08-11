@@ -65,7 +65,7 @@ public class Perfil {
 	 */
 	
 	public Perfil(Long idpk_perfil, Integer idfk_persona, Integer idfk_rol, String creat_per, Date data_creacio,
-			String actualitzat_per, Date data_actualitzacio) {
+			String actualitzat_per, Date data_actualitzacio, Persona persona, Rol rol) {
 		this.idpk_perfil = idpk_perfil;
 		this.idfk_persona = idfk_persona;
 		this.idfk_rol = idfk_rol;
@@ -73,6 +73,8 @@ public class Perfil {
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
 		this.data_actualitzacio = data_actualitzacio;
+		this.persona = persona;
+		this.rol = rol;
 	}
 
 	public Long getIdpk_perfil() {
@@ -130,7 +132,22 @@ public class Perfil {
 	public void setData_actualitzacio(Date data_actualitzacio) {
 		this.data_actualitzacio = data_actualitzacio;
 	}
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
 	
 	
-		
 }

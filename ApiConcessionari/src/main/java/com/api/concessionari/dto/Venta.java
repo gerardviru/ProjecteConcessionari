@@ -80,6 +80,7 @@ public class Venta {
 		
 	}
 	
+	
 	/**
 	 * @param IDPK_VENTA
 	 * @param IDFK_CON
@@ -98,7 +99,8 @@ public class Venta {
 	
 	public Venta(Long idpk_venta, Integer idfk_con, Integer idfk_vehicle, Integer idfk_treb, Integer idfk_client,
 			Integer descompte, Integer iva, Integer preu, Integer preu_final, String creat_per, Date data_creacio,
-			String actualitzat_per, Date data_actualitzacio) {
+			String actualitzat_per, Date data_actualitzacio, Client client, Concessionari concessionari,
+			Vehicle vehicle, Treballador treballador) {
 		this.idpk_venta = idpk_venta;
 		this.idfk_con = idfk_con;
 		this.idfk_vehicle = idfk_vehicle;
@@ -112,110 +114,180 @@ public class Venta {
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
 		this.data_actualitzacio = data_actualitzacio;
+		this.client = client;
+		this.concessionari = concessionari;
+		this.vehicle = vehicle;
+		this.treballador = treballador;
 	}
+
 
 	public Long getIdpk_venta() {
 		return idpk_venta;
 	}
 
+
 	public void setIdpk_venta(Long idpk_venta) {
 		this.idpk_venta = idpk_venta;
 	}
+
 
 	public Integer getIdfk_con() {
 		return idfk_con;
 	}
 
+
 	public void setIdfk_con(Integer idfk_con) {
 		this.idfk_con = idfk_con;
 	}
+
 
 	public Integer getIdfk_vehicle() {
 		return idfk_vehicle;
 	}
 
+
 	public void setIdfk_vehicle(Integer idfk_vehicle) {
 		this.idfk_vehicle = idfk_vehicle;
 	}
+
 
 	public Integer getIdfk_treb() {
 		return idfk_treb;
 	}
 
+
 	public void setIdfk_treb(Integer idfk_treb) {
 		this.idfk_treb = idfk_treb;
 	}
+
 
 	public Integer getIdfk_client() {
 		return idfk_client;
 	}
 
+
 	public void setIdfk_client(Integer idfk_client) {
 		this.idfk_client = idfk_client;
 	}
+
 
 	public Integer getDescompte() {
 		return descompte;
 	}
 
+
 	public void setDescompte(Integer descompte) {
 		this.descompte = descompte;
 	}
+
 
 	public Integer getIva() {
 		return iva;
 	}
 
+
 	public void setIva(Integer iva) {
 		this.iva = iva;
 	}
+
 
 	public Integer getPreu() {
 		return preu;
 	}
 
+
 	public void setPreu(Integer preu) {
 		this.preu = preu;
 	}
+
 
 	public Integer getPreu_final() {
 		return preu_final;
 	}
 
+
 	public void setPreu_final(Integer preu_final) {
 		this.preu_final = preu_final;
 	}
+
 
 	public String getCreat_per() {
 		return creat_per;
 	}
 
+
 	public void setCreat_per(String creat_per) {
 		this.creat_per = creat_per;
 	}
+
 
 	public Date getData_creacio() {
 		return data_creacio;
 	}
 
+
 	public void setData_creacio(Date data_creacio) {
 		this.data_creacio = data_creacio;
 	}
+
 
 	public String getActualitzat_per() {
 		return actualitzat_per;
 	}
 
+
 	public void setActualitzat_per(String actualitzat_per) {
 		this.actualitzat_per = actualitzat_per;
 	}
+
 
 	public Date getData_actualitzacio() {
 		return data_actualitzacio;
 	}
 
+
 	public void setData_actualitzacio(Date data_actualitzacio) {
 		this.data_actualitzacio = data_actualitzacio;
+	}
+
+
+	public Client getClient() {
+		return client;
+	}
+
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+
+	public Concessionari getConcessionari() {
+		return concessionari;
+	}
+
+
+	public void setConcessionari(Concessionari concessionari) {
+		this.concessionari = concessionari;
+	}
+
+
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+
+
+	public Treballador getTreballador() {
+		return treballador;
+	}
+
+
+	public void setTreballador(Treballador treballador) {
+		this.treballador = treballador;
 	}
 	
 	

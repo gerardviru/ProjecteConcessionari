@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="GCON_TB_CLIENT")
@@ -57,6 +60,8 @@ public class Client {
 	public Client() {
 	}
 
+	
+
 	/**
 	 * @param IDPK_CLIENT
 	 * @param IDFK_PERSONA
@@ -68,7 +73,8 @@ public class Client {
 	 */
 	
 	public Client(Long idpk_client, Integer idfk_persona, Integer idfk_con, String creat_per, Date data_creacio,
-			String actualitzat_per, Date data_actualitzacio) {
+			String actualitzat_per, Date data_actualitzacio, Concessionari concessionari, List<Venta> venta,
+			Persona persona) {
 		this.idpk_client = idpk_client;
 		this.idfk_persona = idfk_persona;
 		this.idfk_con = idfk_con;
@@ -76,7 +82,11 @@ public class Client {
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
 		this.data_actualitzacio = data_actualitzacio;
+		this.concessionari = concessionari;
+		this.venta = venta;
+		this.persona = persona;
 	}
+
 
 
 	public Long getIdpk_client() {
@@ -84,9 +94,11 @@ public class Client {
 	}
 
 
+
 	public void setIdpk_client(Long idpk_client) {
 		this.idpk_client = idpk_client;
 	}
+
 
 
 	public Integer getIdfk_persona() {
@@ -94,9 +106,11 @@ public class Client {
 	}
 
 
+
 	public void setIdfk_persona(Integer idfk_persona) {
 		this.idfk_persona = idfk_persona;
 	}
+
 
 
 	public Integer getIdfk_con() {
@@ -104,9 +118,11 @@ public class Client {
 	}
 
 
+
 	public void setIdfk_con(Integer idfk_con) {
 		this.idfk_con = idfk_con;
 	}
+
 
 
 	public String getCreat_per() {
@@ -114,9 +130,11 @@ public class Client {
 	}
 
 
+
 	public void setCreat_per(String creat_per) {
 		this.creat_per = creat_per;
 	}
+
 
 
 	public Date getData_creacio() {
@@ -124,9 +142,11 @@ public class Client {
 	}
 
 
+
 	public void setData_creacio(Date data_creacio) {
 		this.data_creacio = data_creacio;
 	}
+
 
 
 	public String getActualitzat_per() {
@@ -134,9 +154,11 @@ public class Client {
 	}
 
 
+
 	public void setActualitzat_per(String actualitzat_per) {
 		this.actualitzat_per = actualitzat_per;
 	}
+
 
 
 	public Date getData_actualitzacio() {
@@ -144,8 +166,46 @@ public class Client {
 	}
 
 
+
 	public void setData_actualitzacio(Date data_actualitzacio) {
 		this.data_actualitzacio = data_actualitzacio;
+	}
+
+
+
+	public Concessionari getConcessionari() {
+		return concessionari;
+	}
+
+
+
+	public void setConcessionari(Concessionari concessionari) {
+		this.concessionari = concessionari;
+	}
+
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "venta")
+	public List<Venta> getVenta() {
+		return venta;
+	}
+
+
+
+	public void setVenta(List<Venta> venta) {
+		this.venta = venta;
+	}
+
+
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 	
 	

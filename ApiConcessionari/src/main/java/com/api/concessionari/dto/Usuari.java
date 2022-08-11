@@ -71,9 +71,10 @@ public class Usuari {
 	 * @param ACTUALITZAT_PER
 	 * @param DATA_ACTUALITZACIO
 	 */
-	
+
 	public Usuari(Long idpk_usuari, Integer idfk_persona, String username, String password, Integer intents,
-			String bloquejat, String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio) {
+			String bloquejat, String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio,
+			Persona persona) {
 		this.idpk_usuari = idpk_usuari;
 		this.idfk_persona = idfk_persona;
 		this.username = username;
@@ -84,6 +85,7 @@ public class Usuari {
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
 		this.data_actualitzacio = data_actualitzacio;
+		this.persona = persona;
 	}
 
 	public Long getIdpk_usuari() {
@@ -165,6 +167,17 @@ public class Usuari {
 	public void setData_actualitzacio(Date data_actualitzacio) {
 		this.data_actualitzacio = data_actualitzacio;
 	}
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+	
+	
+	
 	
 	
 }

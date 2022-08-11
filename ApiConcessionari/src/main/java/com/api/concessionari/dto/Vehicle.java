@@ -5,12 +5,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="GCON_TB_VEHICLE")
@@ -74,7 +77,7 @@ public class Vehicle {
 	 */
 	
 	public Vehicle(Long idpk_vehicle, String marca, String model, String color, String desc_tecnica, String creat_per,
-			Date data_creacio, String actualitzat_per, Date data_actualitzacio) {
+			Date data_creacio, String actualitzat_per, Date data_actualitzacio, List<Venta> venta, List<Stock> stock) {
 		this.idpk_vehicle = idpk_vehicle;
 		this.marca = marca;
 		this.model = model;
@@ -84,6 +87,8 @@ public class Vehicle {
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
 		this.data_actualitzacio = data_actualitzacio;
+		this.venta = venta;
+		this.stock = stock;
 	}
 
 	public Long getIdpk_vehicle() {
@@ -156,6 +161,27 @@ public class Vehicle {
 
 	public void setData_actualitzacio(Date data_actualitzacio) {
 		this.data_actualitzacio = data_actualitzacio;
+	}
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "venta")
+	public List<Venta> getVenta() {
+		return venta;
+	}
+
+	public void setVenta(List<Venta> venta) {
+		this.venta = venta;
+	}
+
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
+	public List<Stock> getStock() {
+		return stock;
+	}
+
+	public void setStock(List<Stock> stock) {
+		this.stock = stock;
 	}
 	
 	

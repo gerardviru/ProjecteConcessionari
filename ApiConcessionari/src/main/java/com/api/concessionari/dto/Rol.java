@@ -5,12 +5,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="GCON_TM_ROL")
@@ -62,7 +65,7 @@ public class Rol {
 	 */
 	
 	public Rol(Long idpk_rol, String codi_rol, String desc_rol, String creat_per, Date data_creacio,
-			String actualitzat_per, Date data_actualitzacio) {
+			String actualitzat_per, Date data_actualitzacio, List<Perfil> perfil) {
 		this.idpk_rol = idpk_rol;
 		this.codi_rol = codi_rol;
 		this.desc_rol = desc_rol;
@@ -70,6 +73,7 @@ public class Rol {
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
 		this.data_actualitzacio = data_actualitzacio;
+		this.perfil = perfil;
 	}
 
 	public Long getIdpk_rol() {
@@ -127,6 +131,18 @@ public class Rol {
 	public void setData_actualitzacio(Date data_actualitzacio) {
 		this.data_actualitzacio = data_actualitzacio;
 	}
+
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "perfil")
+	public List<Perfil> getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(List<Perfil> perfil) {
+		this.perfil = perfil;
+	}
+	
 	
 	
 }

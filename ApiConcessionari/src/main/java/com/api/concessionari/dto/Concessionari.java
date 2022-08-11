@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="GCON_TB_CONCESSIONARI")
@@ -224,6 +227,8 @@ public class Concessionari {
 		this.provincia = provincia;
 	}
 
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
 	public List<Stock> getStock() {
 		return stock;
 	}
@@ -232,6 +237,8 @@ public class Concessionari {
 		this.stock = stock;
 	}
 
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "venta")
 	public List<Venta> getVenta() {
 		return venta;
 	}
@@ -240,6 +247,9 @@ public class Concessionari {
 		this.venta = venta;
 	}
 
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "treballador")
 	public List<Treballador> getTreballador() {
 		return treballador;
 	}
@@ -248,6 +258,9 @@ public class Concessionari {
 		this.treballador = treballador;
 	}
 
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
 	public List<Client> getClient() {
 		return client;
 	}

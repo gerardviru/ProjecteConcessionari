@@ -73,7 +73,8 @@ public class Stock {
 	 */
 	
 	public Stock(Long idpk_stock, Integer idfk_con, Integer idfk_vehicle, Integer unitats, Integer preu,
-			String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio) {
+			String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio,
+			Concessionari concessionari, Vehicle vehicle) {
 		this.idpk_stock = idpk_stock;
 		this.idfk_con = idfk_con;
 		this.idfk_vehicle = idfk_vehicle;
@@ -83,6 +84,8 @@ public class Stock {
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
 		this.data_actualitzacio = data_actualitzacio;
+		this.concessionari = concessionari;
+		this.vehicle = vehicle;
 	}
 
 	public Long getIdpk_stock() {
@@ -156,6 +159,23 @@ public class Stock {
 	public void setData_actualitzacio(Date data_actualitzacio) {
 		this.data_actualitzacio = data_actualitzacio;
 	}
+
+	public Concessionari getConcessionari() {
+		return concessionari;
+	}
+
+	public void setConcessionari(Concessionari concessionari) {
+		this.concessionari = concessionari;
+	}
+
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+	
 	
 	
 }

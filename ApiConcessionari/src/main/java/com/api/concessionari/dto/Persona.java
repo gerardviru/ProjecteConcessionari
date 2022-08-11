@@ -1,13 +1,20 @@
 package com.api.concessionari.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="GCON_TB_PERSONA")
@@ -58,6 +65,27 @@ public class Persona {
 	@Column (name = "data_actualitzacio")
 	private Date data_actualitzacio;
 	
+	
+	@ManyToOne
+	@JoinColumn(name = "idpk_persona")
+	private Provincia provincia;
+	
+	@OneToMany
+	@JoinColumn(name = "idfk_usuari")
+	private List<Usuari> usuari;
+	
+	@OneToMany
+	@JoinColumn(name = "idfk_treb")
+	private List<Treballador> treballador;
+	
+	@OneToMany
+	@JoinColumn(name = "idfk_perfil")
+	private List<Perfil> perfil;
+	
+	@OneToMany
+	@JoinColumn(name = "idfk_client")
+	private List<Client> client;
+	
 
 	
 	public Persona() {
@@ -82,7 +110,8 @@ public class Persona {
 	
 	public Persona(Long idpk_persona, String nif, String nom, String cognom1, String cognom2, String telefon,
 			String email, String adreça, Integer idfk_prov, Integer codi_postal, String creat_per, Date data_creacio,
-			String actualitzat_per, Date data_actualitzacio) {
+			String actualitzat_per, Date data_actualitzacio, Provincia provincia, List<Usuari> usuari,
+			List<Treballador> treballador, List<Perfil> perfil, List<Client> client) {
 		this.idpk_persona = idpk_persona;
 		this.nif = nif;
 		this.nom = nom;
@@ -97,6 +126,11 @@ public class Persona {
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
 		this.data_actualitzacio = data_actualitzacio;
+		this.provincia = provincia;
+		this.usuari = usuari;
+		this.treballador = treballador;
+		this.perfil = perfil;
+		this.client = client;
 	}
 
 	public Long getIdpk_persona() {
@@ -210,5 +244,56 @@ public class Persona {
 	public void setData_actualitzacio(Date data_actualitzacio) {
 		this.data_actualitzacio = data_actualitzacio;
 	}
+
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
+	}
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuari")
+	public List<Usuari> getUsuari() {
+		return usuari;
+	}
+
+	public void setUsuari(List<Usuari> usuari) {
+		this.usuari = usuari;
+	}
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "treballador")
+	public List<Treballador> getTreballador() {
+		return treballador;
+	}
+
+	public void setTreballador(List<Treballador> treballador) {
+		this.treballador = treballador;
+	}
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "perfil")
+	public List<Perfil> getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(List<Perfil> perfil) {
+		this.perfil = perfil;
+	}
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+	public List<Client> getClient() {
+		return client;
+	}
+
+	public void setClient(List<Client> client) {
+		this.client = client;
+	}
+	
+	
+
 	
 }
