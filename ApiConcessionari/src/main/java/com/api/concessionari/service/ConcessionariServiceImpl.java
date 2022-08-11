@@ -27,7 +27,7 @@ public class ConcessionariServiceImpl implements IConcessionariService {
 	}
 
 	@Override
-	public Concessionari addNewConcessionari(Concessionari concessionari) {
+	public Concessionari saveConcessionari(Concessionari concessionari) {
 		// TODO Auto-generated method stub
 		return iConcessionariDAO.save(concessionari);
 	}

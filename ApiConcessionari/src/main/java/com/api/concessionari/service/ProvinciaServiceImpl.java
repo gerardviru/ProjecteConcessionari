@@ -21,28 +21,29 @@ public class ProvinciaServiceImpl implements IProvinciaService{
 	}
 
 	@Override
-	public Provincia guardarProvincia(Provincia provincia) {
+	public Provincia saveProvincia(Provincia provincia) {
 		// TODO Auto-generated method stub
 		return iprovinciaDAO.save(provincia);
 	}
 
 	@Override
-	public Provincia provinciaID(Long IDPK_PROV) {
+	public Provincia getById(Long IDPK_PROV) {
 		// TODO Auto-generated method stub
 		return iprovinciaDAO.findById(IDPK_PROV).get();
 	}
 
 	@Override
-	public Provincia actualizarProvincia(Provincia provincia) {
+	public Provincia updateProvincia(Provincia provincia) {
 		// TODO Auto-generated method stub
 		return iprovinciaDAO.save(provincia);
 	}
 
 	@Override
-	public void eliminarProvincia(Long IDPK_PROV) {
+	public void deleteProvincia(Long IDPK_PROV) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 	
 

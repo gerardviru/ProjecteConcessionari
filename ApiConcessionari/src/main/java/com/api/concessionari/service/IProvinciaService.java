@@ -11,18 +11,18 @@ public interface IProvinciaService {
 			
 			
 	//Guardar
-	public Provincia guardarProvincia(Provincia provincia);
+	public Provincia saveProvincia(Provincia provincia);
 			
 			
 	//Leer por id
-	public Provincia provinciaID(Long IDPK_PROV);
+	public Provincia getById(Long IDPK_PROV);
 			
 			
 	//Actualizar
-	public Provincia actualizarProvincia(Provincia provincia);
+	public Provincia updateProvincia(Provincia provincia);
 			
 			
 	//Elimina la reserva
-	public void eliminarProvincia(Long IDPK_PROV);
+	public void deleteProvincia(Long IDPK_PROV);
 
 }

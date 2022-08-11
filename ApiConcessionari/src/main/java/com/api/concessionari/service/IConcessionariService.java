@@ -13,7 +13,7 @@ public interface IConcessionariService {
 		public Concessionari getById(Long idpk_con);
 
 		// Add
-		public Concessionari addNewConcessionari(Concessionari concessionari);
+		public Concessionari saveConcessionari(Concessionari concessionari);
 
 		// Update
 		public Concessionari updateConcessionari(Concessionari concessionari);
