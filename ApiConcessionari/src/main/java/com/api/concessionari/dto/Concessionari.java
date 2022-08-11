@@ -9,62 +9,78 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CONCESSIONARI")
+@Table(name="GCON_TB_CONCESSIONARI")
 
 public class Concessionari {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	@Column(name="IDPK_CON", nullable = false)
-	private Long IDPK_CON;
+	@Column(name="idpk_con", nullable = false)
+	private Long idpk_con;
 	
-	@Column(name="CIF", nullable = false)
-	private String CIF;
+	@Column(name="cif", nullable = false)
+	private String cif;
 		
-	@Column(name="CIntNOM")
-	private String CIntNOM;
+	@Column(name="cintnom")
+	private String cintnom;
 		
-	@Column (name = "TELEFON", nullable = false)
-	private String TELEFON;
+	@Column (name = "telefon", nullable = false)
+	private String telefon;
 	
-	@Column (name = "EMAIL", nullable = false)
-	private String EMAIL;
+	@Column (name = "email", nullable = false)
+	private String email;
 	
-	@Column (name = "ADREÇA")
-	private String ADREÇA;
+	@Column (name = "adreça")
+	private String adreça;
 	
-	@Column (name = "IDFK_PROV", nullable = false)
-	private Integer IDFK_PROV;
+	@Column (name = "idfk_prov", nullable = false)
+	private Integer idfk_prov;
 	
-	@Column (name = "CODI_POSTAL")
-	private Integer CODI_POSTAL;
+	@Column (name = "codi_postal")
+	private Integer codi_postal;
 	
-	@Column (name = "CREAT_PER")
-	private String CREAT_PER;
+	@Column (name = "creat_per")
+	private String creat_per;
 	
-	@Column (name = "DATA_CREACIO")
-	private Date DATA_CREACIO;
+	@Column (name = "data_creacio")
+	private Date data_creacio;
 	
-	@Column (name = "ACTUALITZAT_PER")
-	private String ACTUALITZAT_PER;
+	@Column (name = "actualitzat_per")
+	private String actualitzat_per;
 	
-	@Column (name = "DATA_ACTUALITZACIO")
-	private Date DATA_ACTUALITZACIO;
+	@Column (name = "data_actualitzacio")
+	private Date data_actualitzacio;
 	
+		
+	@ManyToOne
+	@JoinColumn(name = "idpk_con")
+	private Provincia provincia;
+	
+	@OneToMany
+	@JoinColumn(name = "idfk_stock")
+	private List<Stock> stock;
 		
 	@OneToMany
-	@JoinColumn(name="IDPK_CON")
-	private List<Provincia> provincia;
-		
+	@JoinColumn(name = "idfk_venta")
+	private List<Venta> venta;
+	
+	@OneToMany
+	@JoinColumn(name = "idfk_treb")
+	private List<Treballador> treballador;
+	
+	@OneToMany
+	@JoinColumn(name = "idfk_client")
+	private List<Client> client;
 	
 	public Concessionari() {
 	}
-
+	
 	/**
 	 * @param IDPK_CON
 	 * @param CIF
@@ -79,130 +95,170 @@ public class Concessionari {
 	 * @param ACTUALITZAT_PER
 	 * @param DATA_ACTUALITZACIO
 	 */
-	public Concessionari(Long IDPK_CON, String CIF, String CIntNOM, String TELEFON, String EMAIL, String ADREÇA, List<Provincia> provincia, 
-			Integer IDFK_PROV,Integer CODI_POSTAL,String CREAT_PER, Date DATA_CREACIO, String ACTUALITZAT_PER,Date DATA_ACTUALITZACIO) {
-		this.IDPK_CON = IDPK_CON;
-		this.CIF = CIF;
-		this.CIntNOM = CIntNOM;
-		this.TELEFON = TELEFON;
-		this.EMAIL = EMAIL;
-		this.ADREÇA = ADREÇA;
-		this.IDFK_PROV =IDFK_PROV;
-		this.CODI_POSTAL = CODI_POSTAL;
+	
+	
+	public Concessionari(Long idpk_con, String cif, String cintnom, String telefon, String email, String adreça,
+			Integer idfk_prov, Integer codi_postal, String creat_per, Date data_creacio, String actualitzat_per,
+			Date data_actualitzacio, Provincia provincia, List<Stock> stock, List<Venta> venta,
+			List<Treballador> treballador, List<Client> client) {
+		this.idpk_con = idpk_con;
+		this.cif = cif;
+		this.cintnom = cintnom;
+		this.telefon = telefon;
+		this.email = email;
+		this.adreça = adreça;
+		this.idfk_prov = idfk_prov;
+		this.codi_postal = codi_postal;
+		this.creat_per = creat_per;
+		this.data_creacio = data_creacio;
+		this.actualitzat_per = actualitzat_per;
+		this.data_actualitzacio = data_actualitzacio;
 		this.provincia = provincia;
-		this.CREAT_PER = CREAT_PER;
-		this.DATA_CREACIO = DATA_CREACIO;
-		this.ACTUALITZAT_PER =ACTUALITZAT_PER;
-		this.DATA_ACTUALITZACIO = DATA_ACTUALITZACIO;
-		
+		this.stock = stock;
+		this.venta = venta;
+		this.treballador = treballador;
+		this.client = client;
 	}
 
-	public void setProvincia(List<Provincia> provincia) {
+	public Long getIdpk_con() {
+		return idpk_con;
+	}
+
+	public void setIdpk_con(Long idpk_con) {
+		this.idpk_con = idpk_con;
+	}
+
+	public String getCif() {
+		return cif;
+	}
+
+	public void setCif(String cif) {
+		this.cif = cif;
+	}
+
+	public String getCintnom() {
+		return cintnom;
+	}
+
+	public void setCintnom(String cintnom) {
+		this.cintnom = cintnom;
+	}
+
+	public String getTelefon() {
+		return telefon;
+	}
+
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAdreça() {
+		return adreça;
+	}
+
+	public void setAdreça(String adreça) {
+		this.adreça = adreça;
+	}
+
+	public Integer getIdfk_prov() {
+		return idfk_prov;
+	}
+
+	public void setIdfk_prov(Integer idfk_prov) {
+		this.idfk_prov = idfk_prov;
+	}
+
+	public Integer getCodi_postal() {
+		return codi_postal;
+	}
+
+	public void setCodi_postal(Integer codi_postal) {
+		this.codi_postal = codi_postal;
+	}
+
+	public String getCreat_per() {
+		return creat_per;
+	}
+
+	public void setCreat_per(String creat_per) {
+		this.creat_per = creat_per;
+	}
+
+	public Date getData_creacio() {
+		return data_creacio;
+	}
+
+	public void setData_creacio(Date data_creacio) {
+		this.data_creacio = data_creacio;
+	}
+
+	public String getActualitzat_per() {
+		return actualitzat_per;
+	}
+
+	public void setActualitzat_per(String actualitzat_per) {
+		this.actualitzat_per = actualitzat_per;
+	}
+
+	public Date getData_actualitzacio() {
+		return data_actualitzacio;
+	}
+
+	public void setData_actualitzacio(Date data_actualitzacio) {
+		this.data_actualitzacio = data_actualitzacio;
+	}
+
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Provincia provincia) {
 		this.provincia = provincia;
 	}
 
-	public Long getIDPK_CON() {
-		return IDPK_CON;
+	public List<Stock> getStock() {
+		return stock;
 	}
 
-	public void setIDPK_CON(Long iDPK_CON) {
-		IDPK_CON = iDPK_CON;
+	public void setStock(List<Stock> stock) {
+		this.stock = stock;
 	}
 
-	public String getCIF() {
-		return CIF;
+	public List<Venta> getVenta() {
+		return venta;
 	}
 
-	public void setCIF(String cIF) {
-		CIF = cIF;
+	public void setVenta(List<Venta> venta) {
+		this.venta = venta;
 	}
 
-	public String getCIntNOM() {
-		return CIntNOM;
+	public List<Treballador> getTreballador() {
+		return treballador;
 	}
 
-	public void setCIntNOM(String cIntNOM) {
-		CIntNOM = cIntNOM;
+	public void setTreballador(List<Treballador> treballador) {
+		this.treballador = treballador;
 	}
 
-	public String getTELEFON() {
-		return TELEFON;
+	public List<Client> getClient() {
+		return client;
 	}
 
-	public void setTELEFON(String tELEFON) {
-		TELEFON = tELEFON;
+	public void setClient(List<Client> client) {
+		this.client = client;
 	}
-
-	public String getEMAIL() {
-		return EMAIL;
-	}
-
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
-	}
-
-	public String getADREÇA() {
-		return ADREÇA;
-	}
-
-	public void setADREÇA(String aDREÇA) {
-		ADREÇA = aDREÇA;
-	}
-
-	public Integer getIDFK_PROV() {
-		return IDFK_PROV;
-	}
-
-	public void setIDFK_PROV(Integer iDFK_PROV) {
-		IDFK_PROV = iDFK_PROV;
-	}
-
-	public Integer getCODI_POSTAL() {
-		return CODI_POSTAL;
-	}
-
-	public void setCODI_POSTAL(Integer cODI_POSTAL) {
-		CODI_POSTAL = cODI_POSTAL;
-	}
-
-	public String getCREAT_PER() {
-		return CREAT_PER;
-	}
-
-	public void setCREAT_PER(String cREAT_PER) {
-		CREAT_PER = cREAT_PER;
-	}
-
-	public Date getDATA_CREACIO() {
-		return DATA_CREACIO;
-	}
-
-	public void setDATA_CREACIO(Date dATA_CREACIO) {
-		DATA_CREACIO = dATA_CREACIO;
-	}
-
-	public String getACTUALITZAT_PER() {
-		return ACTUALITZAT_PER;
-	}
-
-	public void setACTUALITZAT_PER(String aCTUALITZAT_PER) {
-		ACTUALITZAT_PER = aCTUALITZAT_PER;
-	}
-
-	public Date getDATA_ACTUALITZACIO() {
-		return DATA_ACTUALITZACIO;
-	}
-
-	public void setDATA_ACTUALITZACIO(Date dATA_ACTUALITZACIO) {
-		DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
-	}
-
-	@Override
-	public String toString() {
-		return "Concessionari [IDPK_CON=" + IDPK_CON + ", CIF=" + CIF + ", CIntNOM=" + CIntNOM + ", TELEFON=" + TELEFON
-				+ ", EMAIL=" + EMAIL + ", ADREÇA=" + ADREÇA + ", IDFK_PROV=" + IDFK_PROV + ", CODI_POSTAL="
-				+ CODI_POSTAL + ", CREAT_PER=" + CREAT_PER + ", DATA_CREACIO=" + DATA_CREACIO + ", ACTUALITZAT_PER="
-				+ ACTUALITZAT_PER + ", DATA_ACTUALITZACIO=" + DATA_ACTUALITZACIO + ", provincia=" + provincia + "]";
-	}
+	
+	
+	
+	
+	
 
 }

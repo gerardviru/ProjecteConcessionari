@@ -1,47 +1,58 @@
 package com.api.concessionari.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="PROVINCIA")
+@Table(name="GCON_TM_PROVINCA")
 
 public class Provincia {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	@Column(name="IDPK_PROV", nullable = false)
-	private Long IDPK_PROV;
+	@Column(name="idpk_prov", nullable = false)
+	private Long idpk_prov;
 	
-	@Column(name="CODI_PROV", nullable = false)
-	private String CODI_PROV;
+	@Column(name="codi_prov", nullable = false)
+	private String codi_prov;
 		
-	@Column(name="NOM_PROV", nullable = false)
-	private String NOM_PROV;
+	@Column(name="nom_prov", nullable = false)
+	private String nom_prov;
 	
-	@Column (name = "CREAT_PER")
-	private String CREAT_PER;
+	@Column (name = "creat_per")
+	private String creat_per;
 	
-	@Column (name = "DATA_CREACIO")
-	private Date DATA_CREACIO;
+	@Column (name = "data_creacio")
+	private Date data_creacio;
 	
-	@Column (name = "ACTUALITZAT_PER")
-	private String ACTUALITZAT_PER;
+	@Column (name = "actualitzat_per")
+	private String actualitzat_per;
 	
-	@Column (name = "DATA_ACTUALITZACIO")
-	private Date DATA_ACTUALITZACIO;
+	@Column (name = "data_actualitzacio")
+	private Date data_actualitzacio;
+	
+	@OneToMany
+	@JoinColumn(name = "idfk_concessionari")
+	private List<Concessionari> concessionari;
+	
+	@OneToMany
+	@JoinColumn(name = "idfk_persona")
+	private List<Persona> persona;
 	
 	
 	public Provincia() {
 	}
+
 
 	/**
 	 * @param IDPK_PROV
@@ -53,78 +64,107 @@ public class Provincia {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Provincia(Long IDPK_PROV, String CODI_PROV, String NOM_PROV, String CREAT_PER, Date DATA_CREACIO, String ACTUALITZAT_PER,Date DATA_ACTUALITZACIO) {
-		this.IDPK_PROV = IDPK_PROV;
-		this.CODI_PROV = CODI_PROV;
-		this.NOM_PROV = NOM_PROV;
-		this.CREAT_PER = CREAT_PER;
-		this.DATA_CREACIO = DATA_CREACIO;
-		this.ACTUALITZAT_PER =ACTUALITZAT_PER;
-		this.DATA_ACTUALITZACIO = DATA_ACTUALITZACIO;
-		
+	public Provincia(Long idpk_prov, String codi_prov, String nom_prov, String creat_per, Date data_creacio,
+			String actualitzat_per, Date data_actualitzacio, List<Concessionari> concessionari, List<Persona> persona) {
+		this.idpk_prov = idpk_prov;
+		this.codi_prov = codi_prov;
+		this.nom_prov = nom_prov;
+		this.creat_per = creat_per;
+		this.data_creacio = data_creacio;
+		this.actualitzat_per = actualitzat_per;
+		this.data_actualitzacio = data_actualitzacio;
+		this.concessionari = concessionari;
+		this.persona = persona;
 	}
 
-	public Long getIDPK_PROV() {
-		return IDPK_PROV;
+
+	public Long getIdpk_prov() {
+		return idpk_prov;
 	}
 
-	public void setIDPK_PROV(Long iDPK_PROV) {
-		IDPK_PROV = iDPK_PROV;
+
+	public void setIdpk_prov(Long idpk_prov) {
+		this.idpk_prov = idpk_prov;
 	}
 
-	public String getCODI_PROV() {
-		return CODI_PROV;
+
+	public String getCodi_prov() {
+		return codi_prov;
 	}
 
-	public void setCODI_PROV(String cODI_PROV) {
-		CODI_PROV = cODI_PROV;
+
+	public void setCodi_prov(String codi_prov) {
+		this.codi_prov = codi_prov;
 	}
 
-	public String getNOM_PROV() {
-		return NOM_PROV;
+
+	public String getNom_prov() {
+		return nom_prov;
 	}
 
-	public void setNOM_PROV(String nOM_PROV) {
-		NOM_PROV = nOM_PROV;
+
+	public void setNom_prov(String nom_prov) {
+		this.nom_prov = nom_prov;
 	}
 
-	public String getCREAT_PER() {
-		return CREAT_PER;
+
+	public String getCreat_per() {
+		return creat_per;
 	}
 
-	public void setCREAT_PER(String cREAT_PER) {
-		CREAT_PER = cREAT_PER;
+
+	public void setCreat_per(String creat_per) {
+		this.creat_per = creat_per;
 	}
 
-	public Date getDATA_CREACIO() {
-		return DATA_CREACIO;
+
+	public Date getData_creacio() {
+		return data_creacio;
 	}
 
-	public void setDATA_CREACIO(Date dATA_CREACIO) {
-		DATA_CREACIO = dATA_CREACIO;
+
+	public void setData_creacio(Date data_creacio) {
+		this.data_creacio = data_creacio;
 	}
 
-	public String getACTUALITZAT_PER() {
-		return ACTUALITZAT_PER;
+
+	public String getActualitzat_per() {
+		return actualitzat_per;
 	}
 
-	public void setACTUALITZAT_PER(String aCTUALITZAT_PER) {
-		ACTUALITZAT_PER = aCTUALITZAT_PER;
+
+	public void setActualitzat_per(String actualitzat_per) {
+		this.actualitzat_per = actualitzat_per;
 	}
 
-	public Date getDATA_ACTUALITZACIO() {
-		return DATA_ACTUALITZACIO;
+
+	public Date getData_actualitzacio() {
+		return data_actualitzacio;
 	}
 
-	public void setDATA_ACTUALITZACIO(Date dATA_ACTUALITZACIO) {
-		DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
+
+	public void setData_actualitzacio(Date data_actualitzacio) {
+		this.data_actualitzacio = data_actualitzacio;
 	}
 
-	@Override
-	public String toString() {
-		return "Provincia [IDPK_PROV=" + IDPK_PROV + ", CODI_PROV=" + CODI_PROV + ", NOM_PROV=" + NOM_PROV
-				+ ", CREAT_PER=" + CREAT_PER + ", DATA_CREACIO=" + DATA_CREACIO + ", ACTUALITZAT_PER=" + ACTUALITZAT_PER
-				+ ", DATA_ACTUALITZACIO=" + DATA_ACTUALITZACIO + "]";
+
+	public List<Concessionari> getConcessionari() {
+		return concessionari;
+	}
+
+
+	public void setConcessionari(List<Concessionari> concessionari) {
+		this.concessionari = concessionari;
+	}
+
+
+	public List<Persona> getPersona() {
+		return persona;
+	}
+
+
+	public void setPersona(List<Persona> persona) {
+		this.persona = persona;
 	}
 	
 	

@@ -1,42 +1,50 @@
 package com.api.concessionari.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ROL")
+@Table(name="GCON_TM_ROL")
 
 public class Rol {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	@Column(name="IDPK_ROL", nullable = false)
-	private Long IDPK_ROL;
+	@Column(name="idpk_rol", nullable = false)
+	private Long idpk_rol;
 	
-	@Column(name="CODI_ROL", nullable = false)
-	private String CODI_ROL;
+	@Column(name="codi_rol", nullable = false)
+	private String codi_rol;
 		
-	@Column(name="DESC_ROL", nullable = false)
-	private String DESC_ROL;
+	@Column(name="desc_rol", nullable = false)
+	private String desc_rol;
 	
-	@Column (name = "CREAT_PER")
-	private String CREAT_PER;
+	@Column (name = "creat_per")
+	private String creat_per;
 	
-	@Column (name = "DATA_CREACIO")
-	private Date DATA_CREACIO;
+	@Column (name = "data_creacio")
+	private Date data_creacio;
 	
-	@Column (name = "ACTUALITZAT_PER")
-	private String ACTUALITZAT_PER;
+	@Column (name = "actualitzat_per")
+	private String actualitzat_per;
 	
-	@Column (name = "DATA_ACTUALITZACIO")
-	private Date DATA_ACTUALITZACIO;
+	@Column (name = "data_actualitzacio")
+	private Date data_actualitzacio;
+	
+	
+	@OneToMany
+	@JoinColumn(name = "idfk_perfil")
+	private List<Perfil> perfil;
 
 
 	public Rol() {
@@ -53,81 +61,72 @@ public class Rol {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	
-	public Rol(Long iDPK_ROL, String cODI_ROL, String dESC_ROL, String cREAT_PER, Date dATA_CREACIO,
-			String aCTUALITZAT_PER, Date dATA_ACTUALITZACIO) {
-		this.IDPK_ROL = iDPK_ROL;
-		this.CODI_ROL = cODI_ROL;
-		this.DESC_ROL = dESC_ROL;
-		this.CREAT_PER = cREAT_PER;
-		this.DATA_CREACIO = dATA_CREACIO;
-		this.ACTUALITZAT_PER = aCTUALITZAT_PER;
-		this.DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
+	public Rol(Long idpk_rol, String codi_rol, String desc_rol, String creat_per, Date data_creacio,
+			String actualitzat_per, Date data_actualitzacio) {
+		this.idpk_rol = idpk_rol;
+		this.codi_rol = codi_rol;
+		this.desc_rol = desc_rol;
+		this.creat_per = creat_per;
+		this.data_creacio = data_creacio;
+		this.actualitzat_per = actualitzat_per;
+		this.data_actualitzacio = data_actualitzacio;
 	}
 
-	public Long getIDPK_ROL() {
-		return IDPK_ROL;
+	public Long getIdpk_rol() {
+		return idpk_rol;
 	}
 
-	public void setIDPK_ROL(Long iDPK_ROL) {
-		IDPK_ROL = iDPK_ROL;
+	public void setIdpk_rol(Long idpk_rol) {
+		this.idpk_rol = idpk_rol;
 	}
 
-	public String getCODI_ROL() {
-		return CODI_ROL;
+	public String getCodi_rol() {
+		return codi_rol;
 	}
 
-	public void setCODI_ROL(String cODI_ROL) {
-		CODI_ROL = cODI_ROL;
+	public void setCodi_rol(String codi_rol) {
+		this.codi_rol = codi_rol;
 	}
 
-	public String getDESC_ROL() {
-		return DESC_ROL;
+	public String getDesc_rol() {
+		return desc_rol;
 	}
 
-	public void setDESC_ROL(String dESC_ROL) {
-		DESC_ROL = dESC_ROL;
+	public void setDesc_rol(String desc_rol) {
+		this.desc_rol = desc_rol;
 	}
 
-	public String getCREAT_PER() {
-		return CREAT_PER;
+	public String getCreat_per() {
+		return creat_per;
 	}
 
-	public void setCREAT_PER(String cREAT_PER) {
-		CREAT_PER = cREAT_PER;
+	public void setCreat_per(String creat_per) {
+		this.creat_per = creat_per;
 	}
 
-	public Date getDATA_CREACIO() {
-		return DATA_CREACIO;
+	public Date getData_creacio() {
+		return data_creacio;
 	}
 
-	public void setDATA_CREACIO(Date dATA_CREACIO) {
-		DATA_CREACIO = dATA_CREACIO;
+	public void setData_creacio(Date data_creacio) {
+		this.data_creacio = data_creacio;
 	}
 
-	public String getACTUALITZAT_PER() {
-		return ACTUALITZAT_PER;
+	public String getActualitzat_per() {
+		return actualitzat_per;
 	}
 
-	public void setACTUALITZAT_PER(String aCTUALITZAT_PER) {
-		ACTUALITZAT_PER = aCTUALITZAT_PER;
+	public void setActualitzat_per(String actualitzat_per) {
+		this.actualitzat_per = actualitzat_per;
 	}
 
-	public Date getDATA_ACTUALITZACIO() {
-		return DATA_ACTUALITZACIO;
+	public Date getData_actualitzacio() {
+		return data_actualitzacio;
 	}
 
-	public void setDATA_ACTUALITZACIO(Date dATA_ACTUALITZACIO) {
-		DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
+	public void setData_actualitzacio(Date data_actualitzacio) {
+		this.data_actualitzacio = data_actualitzacio;
 	}
-
-	@Override
-	public String toString() {
-		return "Rol [IDPK_ROL=" + IDPK_ROL + ", CODI_ROL=" + CODI_ROL + ", DESC_ROL=" + DESC_ROL + ", CREAT_PER="
-				+ CREAT_PER + ", DATA_CREACIO=" + DATA_CREACIO + ", ACTUALITZAT_PER=" + ACTUALITZAT_PER
-				+ ", DATA_ACTUALITZACIO=" + DATA_ACTUALITZACIO + "]";
-	}
-	
 	
 	
 }

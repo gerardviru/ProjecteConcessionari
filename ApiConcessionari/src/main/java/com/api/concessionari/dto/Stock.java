@@ -7,48 +7,59 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="STOCK")
+@Table(name="GCON_TB_STOCK")
 
 public class Stock {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	@Column(name="IDPK_STOCK", nullable = false)
-	private Long IDPK_STOCK;
+	@Column(name="idpk_stock", nullable = false)
+	private Long idpk_stock;
 	
-	@Column(name="IDFK_CON", nullable = false)
-	private Integer IDFK_CON;
+	@Column(name="idfk_con", nullable = false)
+	private Integer idfk_con;
 		
-	@Column(name="IDFK_VEHICLE", nullable = false)
-	private Integer IDFK_VEHICLE;
+	@Column(name="idfk_vehicle", nullable = false)
+	private Integer idfk_vehicle;
 	
-	@Column(name="UNITATS", nullable = false)
-	private Integer UNITATS;
+	@Column(name="unitats", nullable = false)
+	private Integer unitats;
 	
-	@Column(name="PREU", nullable = false)
-	private Integer PREU;
+	@Column(name="preu", nullable = false)
+	private Integer preu;
 	
-	@Column (name = "CREAT_PER")
-	private String CREAT_PER;
+	@Column (name = "creat_per")
+	private String creat_per;
 	
-	@Column (name = "DATA_CREACIO")
-	private Date DATA_CREACIO;
+	@Column (name = "data_creacio")
+	private Date data_creacio;
 	
-	@Column (name = "ACTUALITZAT_PER")
-	private String ACTUALITZAT_PER;
+	@Column (name = "actualitzat_per")
+	private String actualitzat_per;
 	
-	@Column (name = "DATA_ACTUALITZACIO")
-	private Date DATA_ACTUALITZACIO;
+	@Column (name = "data_actualitzacio")
+	private Date data_actualitzacio;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "idpk_stock")
+	private Concessionari concessionari;
+	
+	@ManyToOne
+	@JoinColumn(name = "idpk_stock")
+	private Vehicle vehicle;
 	
 	
 	public Stock() {
 		
 	}
-
+	
 	/**
 	 * @param IDPK_STOCK
 	 * @param IDFK_CON
@@ -61,116 +72,89 @@ public class Stock {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Stock(Long iDPK_STOCK, Integer iDFK_CON, Integer iDFK_VEHICLE, Integer uNITATS, Integer pREU,
-			String cREAT_PER, Date dATA_CREACIO, String aCTUALITZAT_PER, Date dATA_ACTUALITZACIO) {
-		this.IDPK_STOCK = iDPK_STOCK;
-		this.IDFK_CON = iDFK_CON;
-		this.IDFK_VEHICLE = iDFK_VEHICLE;
-		this.UNITATS = uNITATS;
-		this.PREU = pREU;
-		this.CREAT_PER = cREAT_PER;
-		this.DATA_CREACIO = dATA_CREACIO;
-		this.ACTUALITZAT_PER = aCTUALITZAT_PER;
-		this.DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
+	public Stock(Long idpk_stock, Integer idfk_con, Integer idfk_vehicle, Integer unitats, Integer preu,
+			String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio) {
+		this.idpk_stock = idpk_stock;
+		this.idfk_con = idfk_con;
+		this.idfk_vehicle = idfk_vehicle;
+		this.unitats = unitats;
+		this.preu = preu;
+		this.creat_per = creat_per;
+		this.data_creacio = data_creacio;
+		this.actualitzat_per = actualitzat_per;
+		this.data_actualitzacio = data_actualitzacio;
 	}
 
-
-	public Long getIDPK_STOCK() {
-		return IDPK_STOCK;
+	public Long getIdpk_stock() {
+		return idpk_stock;
 	}
 
-
-	public void setIDPK_STOCK(Long iDPK_STOCK) {
-		IDPK_STOCK = iDPK_STOCK;
+	public void setIdpk_stock(Long idpk_stock) {
+		this.idpk_stock = idpk_stock;
 	}
 
-
-	public Integer getIDFK_CON() {
-		return IDFK_CON;
+	public Integer getIdfk_con() {
+		return idfk_con;
 	}
 
-
-	public void setIDFK_CON(Integer iDFK_CON) {
-		IDFK_CON = iDFK_CON;
+	public void setIdfk_con(Integer idfk_con) {
+		this.idfk_con = idfk_con;
 	}
 
-
-	public Integer getIDFK_VEHICLE() {
-		return IDFK_VEHICLE;
+	public Integer getIdfk_vehicle() {
+		return idfk_vehicle;
 	}
 
-
-	public void setIDFK_VEHICLE(Integer iDFK_VEHICLE) {
-		IDFK_VEHICLE = iDFK_VEHICLE;
+	public void setIdfk_vehicle(Integer idfk_vehicle) {
+		this.idfk_vehicle = idfk_vehicle;
 	}
 
-
-	public Integer getUNITATS() {
-		return UNITATS;
+	public Integer getUnitats() {
+		return unitats;
 	}
 
-
-	public void setUNITATS(Integer uNITATS) {
-		UNITATS = uNITATS;
+	public void setUnitats(Integer unitats) {
+		this.unitats = unitats;
 	}
 
-
-	public Integer getPREU() {
-		return PREU;
+	public Integer getPreu() {
+		return preu;
 	}
 
-
-	public void setPREU(Integer pREU) {
-		PREU = pREU;
+	public void setPreu(Integer preu) {
+		this.preu = preu;
 	}
 
-
-	public String getCREAT_PER() {
-		return CREAT_PER;
+	public String getCreat_per() {
+		return creat_per;
 	}
 
-
-	public void setCREAT_PER(String cREAT_PER) {
-		CREAT_PER = cREAT_PER;
+	public void setCreat_per(String creat_per) {
+		this.creat_per = creat_per;
 	}
 
-
-	public Date getDATA_CREACIO() {
-		return DATA_CREACIO;
+	public Date getData_creacio() {
+		return data_creacio;
 	}
 
-
-	public void setDATA_CREACIO(Date dATA_CREACIO) {
-		DATA_CREACIO = dATA_CREACIO;
+	public void setData_creacio(Date data_creacio) {
+		this.data_creacio = data_creacio;
 	}
 
-
-	public String getACTUALITZAT_PER() {
-		return ACTUALITZAT_PER;
+	public String getActualitzat_per() {
+		return actualitzat_per;
 	}
 
-
-	public void setACTUALITZAT_PER(String aCTUALITZAT_PER) {
-		ACTUALITZAT_PER = aCTUALITZAT_PER;
+	public void setActualitzat_per(String actualitzat_per) {
+		this.actualitzat_per = actualitzat_per;
 	}
 
-
-	public Date getDATA_ACTUALITZACIO() {
-		return DATA_ACTUALITZACIO;
+	public Date getData_actualitzacio() {
+		return data_actualitzacio;
 	}
 
-
-	public void setDATA_ACTUALITZACIO(Date dATA_ACTUALITZACIO) {
-		DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Stock [IDPK_STOCK=" + IDPK_STOCK + ", IDFK_CON=" + IDFK_CON + ", IDFK_VEHICLE=" + IDFK_VEHICLE
-				+ ", UNITATS=" + UNITATS + ", PREU=" + PREU + ", CREAT_PER=" + CREAT_PER + ", DATA_CREACIO="
-				+ DATA_CREACIO + ", ACTUALITZAT_PER=" + ACTUALITZAT_PER + ", DATA_ACTUALITZACIO=" + DATA_ACTUALITZACIO
-				+ "]";
+	public void setData_actualitzacio(Date data_actualitzacio) {
+		this.data_actualitzacio = data_actualitzacio;
 	}
 	
 	

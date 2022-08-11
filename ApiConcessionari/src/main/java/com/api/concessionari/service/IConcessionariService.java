@@ -10,7 +10,7 @@ public interface IConcessionariService {
 		public List<Concessionari> listarConcessionari();
 		
 		// Get by id
-		public Concessionari getById(Long IDPK_CON);
+		public Concessionari getById(Long idpk_con);
 
 		// Add
 		public Concessionari addNewConcessionari(Concessionari concessionari);
@@ -19,5 +19,5 @@ public interface IConcessionariService {
 		public Concessionari updateConcessionari(Concessionari concessionari);
 
 		// Delete
-		public void deleteConcessionari(Long IDPK_CON);
+		public void deleteConcessionari(Long idpk_con);
 }

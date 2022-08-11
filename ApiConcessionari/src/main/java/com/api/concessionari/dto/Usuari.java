@@ -7,51 +7,57 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USUARI")
+@Table(name="GCON_TB_USUARI")
 
 public class Usuari {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	@Column(name="IDPK_USUARI", nullable = false)
-	private Long IDPK_USUARI;
+	@Column(name="idpk_usuari", nullable = false)
+	private Long idpk_usuari;
 	
-	@Column(name="IDFK_PERSONA", nullable = false)
-	private Integer IDFK_PERSONA;
+	@Column(name="idfk_persona", nullable = false)
+	private Integer idfk_persona;
 		
-	@Column(name="USERNAME", nullable = false)
-	private String USERNAME;
+	@Column(name="username", nullable = false)
+	private String username;
 	
-	@Column(name="PASSWORD", nullable = false)
-	private String PASSWORD;
+	@Column(name="password", nullable = false)
+	private String password;
 	
-	@Column(name="INTENTS", nullable = false)
-	private Integer INTENTS;
+	@Column(name="intents", nullable = false)
+	private Integer intents;
 	
-	@Column(name="BLOQUEJAT", nullable = false)
-	private String BLOQUEJAT;
+	@Column(name="bloquejat", nullable = false)
+	private String bloquejat;
 	
-	@Column (name = "CREAT_PER")
-	private String CREAT_PER;
+	@Column (name = "creat_per")
+	private String creat_per;
 	
-	@Column (name = "DATA_CREACIO")
-	private Date DATA_CREACIO;
+	@Column (name = "data_creacio")
+	private Date data_creacio;
 	
-	@Column (name = "ACTUALITZAT_PER")
-	private String ACTUALITZAT_PER;
+	@Column (name = "actualitzat_per")
+	private String actualitzat_per;
 	
-	@Column (name = "DATA_ACTUALITZACIO")
-	private Date DATA_ACTUALITZACIO;
+	@Column (name = "data_actualitzacio")
+	private Date data_actualitzacio;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "idpk_usuari")
+	private Persona persona;
 	
 	
 	public Usuari() {
 		
 	}
-
 
 	/**
 	 * @param IDPK_USUARI
@@ -66,150 +72,99 @@ public class Usuari {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Usuari(Long iDPK_USUARI, Integer iDFK_PERSONA, String uSERNAME, String pASSWORD, Integer iNTENTS,
-			String bLOQUEJAT, String cREAT_PER, Date dATA_CREACIO, String aCTUALITZAT_PER, Date dATA_ACTUALITZACIO) {
-		this.IDPK_USUARI = iDPK_USUARI;
-		this.IDFK_PERSONA = iDFK_PERSONA;
-		this.USERNAME = uSERNAME;
-		this.PASSWORD = pASSWORD;
-		this.INTENTS = iNTENTS;
-		this.BLOQUEJAT = bLOQUEJAT;
-		this.CREAT_PER = cREAT_PER;
-		this.DATA_CREACIO = dATA_CREACIO;
-		this.ACTUALITZAT_PER = aCTUALITZAT_PER;
-		this.DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
+	public Usuari(Long idpk_usuari, Integer idfk_persona, String username, String password, Integer intents,
+			String bloquejat, String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio) {
+		this.idpk_usuari = idpk_usuari;
+		this.idfk_persona = idfk_persona;
+		this.username = username;
+		this.password = password;
+		this.intents = intents;
+		this.bloquejat = bloquejat;
+		this.creat_per = creat_per;
+		this.data_creacio = data_creacio;
+		this.actualitzat_per = actualitzat_per;
+		this.data_actualitzacio = data_actualitzacio;
 	}
 
-
-
-	public Long getIDPK_USUARI() {
-		return IDPK_USUARI;
+	public Long getIdpk_usuari() {
+		return idpk_usuari;
 	}
 
-
-
-	public void setIDPK_USUARI(Long iDPK_USUARI) {
-		IDPK_USUARI = iDPK_USUARI;
+	public void setIdpk_usuari(Long idpk_usuari) {
+		this.idpk_usuari = idpk_usuari;
 	}
 
-
-
-	public Integer getIDFK_PERSONA() {
-		return IDFK_PERSONA;
+	public Integer getIdfk_persona() {
+		return idfk_persona;
 	}
 
-
-
-	public void setIDFK_PERSONA(Integer iDFK_PERSONA) {
-		IDFK_PERSONA = iDFK_PERSONA;
+	public void setIdfk_persona(Integer idfk_persona) {
+		this.idfk_persona = idfk_persona;
 	}
 
-
-
-	public String getUSERNAME() {
-		return USERNAME;
+	public String getUsername() {
+		return username;
 	}
 
-
-
-	public void setUSERNAME(String uSERNAME) {
-		USERNAME = uSERNAME;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-
-
-	public String getPASSWORD() {
-		return PASSWORD;
+	public String getPassword() {
+		return password;
 	}
 
-
-
-	public void setPASSWORD(String pASSWORD) {
-		PASSWORD = pASSWORD;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-
-
-	public Integer getINTENTS() {
-		return INTENTS;
+	public Integer getIntents() {
+		return intents;
 	}
 
-
-
-	public void setINTENTS(Integer iNTENTS) {
-		INTENTS = iNTENTS;
+	public void setIntents(Integer intents) {
+		this.intents = intents;
 	}
 
-
-
-	public String getBLOQUEJAT() {
-		return BLOQUEJAT;
+	public String getBloquejat() {
+		return bloquejat;
 	}
 
-
-
-	public void setBLOQUEJAT(String bLOQUEJAT) {
-		BLOQUEJAT = bLOQUEJAT;
+	public void setBloquejat(String bloquejat) {
+		this.bloquejat = bloquejat;
 	}
 
-
-
-	public String getCREAT_PER() {
-		return CREAT_PER;
+	public String getCreat_per() {
+		return creat_per;
 	}
 
-
-
-	public void setCREAT_PER(String cREAT_PER) {
-		CREAT_PER = cREAT_PER;
+	public void setCreat_per(String creat_per) {
+		this.creat_per = creat_per;
 	}
 
-
-
-	public Date getDATA_CREACIO() {
-		return DATA_CREACIO;
+	public Date getData_creacio() {
+		return data_creacio;
 	}
 
-
-
-	public void setDATA_CREACIO(Date dATA_CREACIO) {
-		DATA_CREACIO = dATA_CREACIO;
+	public void setData_creacio(Date data_creacio) {
+		this.data_creacio = data_creacio;
 	}
 
-
-
-	public String getACTUALITZAT_PER() {
-		return ACTUALITZAT_PER;
+	public String getActualitzat_per() {
+		return actualitzat_per;
 	}
 
-
-
-	public void setACTUALITZAT_PER(String aCTUALITZAT_PER) {
-		ACTUALITZAT_PER = aCTUALITZAT_PER;
+	public void setActualitzat_per(String actualitzat_per) {
+		this.actualitzat_per = actualitzat_per;
 	}
 
-
-
-	public Date getDATA_ACTUALITZACIO() {
-		return DATA_ACTUALITZACIO;
+	public Date getData_actualitzacio() {
+		return data_actualitzacio;
 	}
 
-
-
-	public void setDATA_ACTUALITZACIO(Date dATA_ACTUALITZACIO) {
-		DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
+	public void setData_actualitzacio(Date data_actualitzacio) {
+		this.data_actualitzacio = data_actualitzacio;
 	}
-
-
-
-	@Override
-	public String toString() {
-		return "Usuari [IDPK_USUARI=" + IDPK_USUARI + ", IDFK_PERSONA=" + IDFK_PERSONA + ", USERNAME=" + USERNAME
-				+ ", PASSWORD=" + PASSWORD + ", INTENTS=" + INTENTS + ", BLOQUEJAT=" + BLOQUEJAT + ", CREAT_PER="
-				+ CREAT_PER + ", DATA_CREACIO=" + DATA_CREACIO + ", ACTUALITZAT_PER=" + ACTUALITZAT_PER
-				+ ", DATA_ACTUALITZACIO=" + DATA_ACTUALITZACIO + "]";
-	}
-	
 	
 	
 }

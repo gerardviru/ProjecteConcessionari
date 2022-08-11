@@ -7,43 +7,49 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TREBALLADOR")
+@Table(name="GCON_TB_TREBALLADOR")
 
 public class Treballador {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	@Column(name="IDPK_TREB", nullable = false)
-	private Long IDPK_TREB;
+	@Column(name="idpk_treb", nullable = false)
+	private Long idpk_treb;
 	
-	@Column(name="IDFK_PERSONA", nullable = false)
-	private Integer IDFK_PERSONA;
+	@Column(name="idfk_persona", nullable = false)
+	private Integer idfk_persona;
 		
-	@Column(name="IDFK_CON", nullable = false)
-	private Integer IDFK_CON;
+	@Column(name="idfk_con", nullable = false)
+	private Integer idfk_con;
 	
-	@Column(name="NUM_SEG_SOC", nullable = false)
-	private Integer NUM_SEG_SOC;
+	@Column(name="num_seg_soc", nullable = false)
+	private Integer num_seg_soc;
 	
-	@Column(name="CARREC", nullable = false)
-	private Integer CARREC;
+	@Column(name="carrec", nullable = false)
+	private Integer carrec;
 	
-	@Column (name = "CREAT_PER")
-	private String CREAT_PER;
+	@Column (name = "creat_per")
+	private String creat_per;
 	
-	@Column (name = "DATA_CREACIO")
-	private Date DATA_CREACIO;
+	@Column (name = "data_creacio")
+	private Date data_creacio;
 	
-	@Column (name = "ACTUALITZAT_PER")
-	private String ACTUALITZAT_PER;
+	@Column (name = "actualitzat_per")
+	private String actualitzat_per;
 	
-	@Column (name = "DATA_ACTUALITZACIO")
-	private Date DATA_ACTUALITZACIO;
+	@Column (name = "data_actualitzacio")
+	private Date data_actualitzacio;
 	
+	
+	@ManyToOne
+	@JoinColumn(name = "idpk_treb")
+	private Concessionari concessionari;
 	
 	public Treballador() {
 	}
@@ -61,118 +67,108 @@ public class Treballador {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Treballador(Long iDPK_TREB, Integer iDFK_PERSONA, Integer iDFK_CON, Integer nUM_SEG_SOC, Integer cARREC,
-			String cREAT_PER, Date dATA_CREACIO, String aCTUALITZAT_PER, Date dATA_ACTUALITZACIO) {
-		IDPK_TREB = iDPK_TREB;
-		IDFK_PERSONA = iDFK_PERSONA;
-		IDFK_CON = iDFK_CON;
-		NUM_SEG_SOC = nUM_SEG_SOC;
-		CARREC = cARREC;
-		CREAT_PER = cREAT_PER;
-		DATA_CREACIO = dATA_CREACIO;
-		ACTUALITZAT_PER = aCTUALITZAT_PER;
-		DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
+	public Treballador(Long idpk_treb, Integer idfk_persona, Integer idfk_con, Integer num_seg_soc, Integer carrec,
+			String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio) {
+		this.idpk_treb = idpk_treb;
+		this.idfk_persona = idfk_persona;
+		this.idfk_con = idfk_con;
+		this.num_seg_soc = num_seg_soc;
+		this.carrec = carrec;
+		this.creat_per = creat_per;
+		this.data_creacio = data_creacio;
+		this.actualitzat_per = actualitzat_per;
+		this.data_actualitzacio = data_actualitzacio;
 	}
 
 
-	public Long getIDPK_TREB() {
-		return IDPK_TREB;
+	public Long getIdpk_treb() {
+		return idpk_treb;
 	}
 
 
-	public void setIDPK_TREB(Long iDPK_TREB) {
-		IDPK_TREB = iDPK_TREB;
+	public void setIdpk_treb(Long idpk_treb) {
+		this.idpk_treb = idpk_treb;
 	}
 
 
-	public Integer getIDFK_PERSONA() {
-		return IDFK_PERSONA;
+	public Integer getIdfk_persona() {
+		return idfk_persona;
 	}
 
 
-	public void setIDFK_PERSONA(Integer iDFK_PERSONA) {
-		IDFK_PERSONA = iDFK_PERSONA;
+	public void setIdfk_persona(Integer idfk_persona) {
+		this.idfk_persona = idfk_persona;
 	}
 
 
-	public Integer getIDFK_CON() {
-		return IDFK_CON;
+	public Integer getIdfk_con() {
+		return idfk_con;
 	}
 
 
-	public void setIDFK_CON(Integer iDFK_CON) {
-		IDFK_CON = iDFK_CON;
+	public void setIdfk_con(Integer idfk_con) {
+		this.idfk_con = idfk_con;
 	}
 
 
-	public Integer getNUM_SEG_SOC() {
-		return NUM_SEG_SOC;
+	public Integer getNum_seg_soc() {
+		return num_seg_soc;
 	}
 
 
-	public void setNUM_SEG_SOC(Integer nUM_SEG_SOC) {
-		NUM_SEG_SOC = nUM_SEG_SOC;
+	public void setNum_seg_soc(Integer num_seg_soc) {
+		this.num_seg_soc = num_seg_soc;
 	}
 
 
-	public Integer getCARREC() {
-		return CARREC;
+	public Integer getCarrec() {
+		return carrec;
 	}
 
 
-	public void setCARREC(Integer cARREC) {
-		CARREC = cARREC;
+	public void setCarrec(Integer carrec) {
+		this.carrec = carrec;
 	}
 
 
-	public String getCREAT_PER() {
-		return CREAT_PER;
+	public String getCreat_per() {
+		return creat_per;
 	}
 
 
-	public void setCREAT_PER(String cREAT_PER) {
-		CREAT_PER = cREAT_PER;
+	public void setCreat_per(String creat_per) {
+		this.creat_per = creat_per;
 	}
 
 
-	public Date getDATA_CREACIO() {
-		return DATA_CREACIO;
+	public Date getData_creacio() {
+		return data_creacio;
 	}
 
 
-	public void setDATA_CREACIO(Date dATA_CREACIO) {
-		DATA_CREACIO = dATA_CREACIO;
+	public void setData_creacio(Date data_creacio) {
+		this.data_creacio = data_creacio;
 	}
 
 
-	public String getACTUALITZAT_PER() {
-		return ACTUALITZAT_PER;
+	public String getActualitzat_per() {
+		return actualitzat_per;
 	}
 
 
-	public void setACTUALITZAT_PER(String aCTUALITZAT_PER) {
-		ACTUALITZAT_PER = aCTUALITZAT_PER;
+	public void setActualitzat_per(String actualitzat_per) {
+		this.actualitzat_per = actualitzat_per;
 	}
 
 
-	public Date getDATA_ACTUALITZACIO() {
-		return DATA_ACTUALITZACIO;
+	public Date getData_actualitzacio() {
+		return data_actualitzacio;
 	}
 
 
-	public void setDATA_ACTUALITZACIO(Date dATA_ACTUALITZACIO) {
-		DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
-	}
+	public void setData_actualitzacio(Date data_actualitzacio) {
+		this.data_actualitzacio = data_actualitzacio;
+	}	
 
-
-	@Override
-	public String toString() {
-		return "Treballador [IDPK_TREB=" + IDPK_TREB + ", IDFK_PERSONA=" + IDFK_PERSONA + ", IDFK_CON=" + IDFK_CON
-				+ ", NUM_SEG_SOC=" + NUM_SEG_SOC + ", CARREC=" + CARREC + ", CREAT_PER=" + CREAT_PER + ", DATA_CREACIO="
-				+ DATA_CREACIO + ", ACTUALITZAT_PER=" + ACTUALITZAT_PER + ", DATA_ACTUALITZACIO=" + DATA_ACTUALITZACIO
-				+ "]";
-	}
 	
-	
-
 }

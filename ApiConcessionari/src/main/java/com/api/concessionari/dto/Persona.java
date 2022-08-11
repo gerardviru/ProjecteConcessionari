@@ -3,56 +3,60 @@ package com.api.concessionari.dto;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="GCON_TB_PERSONA")
 public class Persona {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	@Column(name="IDPK_PERSONA", nullable = false)
-	private Long IDPK_PERSONA;
+	@Column(name="idpk_persona", nullable = false)
+	private Long idpk_persona;
 	
-	@Column(name="NIF", nullable = false)
-	private String NIF;
+	@Column(name="nif", nullable = false)
+	private String nif;
 		
-	@Column(name="NOM", nullable = false)
-	private String NOM;
+	@Column(name="nom", nullable = false)
+	private String nom;
 	
-	@Column (name = "COGNOM1", nullable = false)
-	private String COGNOM1;
+	@Column (name = "cognom1", nullable = false)
+	private String cognom1;
 	
-	@Column (name = "COGNOM2")
-	private String COGNOM2;
+	@Column (name = "cognom2")
+	private String cognom2;
 	
-	@Column (name = "TELEFON")
-	private String TELEFON;
+	@Column (name = "telefon", nullable = false)
+	private String telefon;
 	
-	@Column (name = "EMAIL")
-	private String EMAIL;
+	@Column (name = "email")
+	private String email;
 	
-	@Column (name = "ADREÇA")
-	private String ADREÇA;
+	@Column (name = "adreça")
+	private String adreça;
 	
-	@Column (name = "IDFK_PROV", nullable = false)
-	private Integer IDFK_PROV;
+	@Column (name = "idfk_prov", nullable = false)
+	private Integer idfk_prov;
 	
-	@Column (name = "CODI_POSTAL")
-	private Integer CODI_POSTAL;
+	@Column (name = "codi_postal")
+	private Integer codi_postal;
 	
-	@Column (name = "CREAT_PER")
-	private String CREAT_PER;
+	@Column (name = "creat_per")
+	private String creat_per;
 	
-	@Column (name = "DATA_CREACIO")
-	private Date DATA_CREACIO;
+	@Column (name = "data_creacio")
+	private Date data_creacio;
 	
-	@Column (name = "ACTUALITZAT_PER")
-	private String ACTUALITZAT_PER;
+	@Column (name = "actualitzat_per")
+	private String actualitzat_per;
 	
-	@Column (name = "DATA_ACTUALITZACIO")
-	private Date DATA_ACTUALITZACIO;
+	@Column (name = "data_actualitzacio")
+	private Date data_actualitzacio;
 	
 
 	
@@ -76,144 +80,135 @@ public class Persona {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Persona(Long IDPK_PERSONA, String NIF, String NOM, String COGNOM1, String COGNOM2, String TELEFON, String EMAIL, String ADREÇA, 
-			Integer IDFK_PROV,Integer CODI_POSTAL,String CREAT_PER, Date DATA_CREACIO, String ACTUALITZAT_PER,Date DATA_ACTUALITZACIO) {
-		this.IDPK_PERSONA = IDPK_PERSONA;
-		this.NIF = NIF;
-		this.NOM = NOM;
-		this.COGNOM1 = COGNOM1;
-		this.COGNOM2 = COGNOM2;
-		this.TELEFON = TELEFON;
-		this.EMAIL = EMAIL;
-		this.ADREÇA = ADREÇA;
-		this.CREAT_PER = CREAT_PER;
-		this.DATA_CREACIO = DATA_CREACIO;
-		this.ACTUALITZAT_PER =ACTUALITZAT_PER;
-		this.DATA_ACTUALITZACIO = DATA_ACTUALITZACIO;
-		
+	public Persona(Long idpk_persona, String nif, String nom, String cognom1, String cognom2, String telefon,
+			String email, String adreça, Integer idfk_prov, Integer codi_postal, String creat_per, Date data_creacio,
+			String actualitzat_per, Date data_actualitzacio) {
+		this.idpk_persona = idpk_persona;
+		this.nif = nif;
+		this.nom = nom;
+		this.cognom1 = cognom1;
+		this.cognom2 = cognom2;
+		this.telefon = telefon;
+		this.email = email;
+		this.adreça = adreça;
+		this.idfk_prov = idfk_prov;
+		this.codi_postal = codi_postal;
+		this.creat_per = creat_per;
+		this.data_creacio = data_creacio;
+		this.actualitzat_per = actualitzat_per;
+		this.data_actualitzacio = data_actualitzacio;
 	}
 
-	public Long getIDPK_PERSONA() {
-		return IDPK_PERSONA;
+	public Long getIdpk_persona() {
+		return idpk_persona;
 	}
 
-	public void setIDPK_PERSONA(Long iDPK_PERSONA) {
-		IDPK_PERSONA = iDPK_PERSONA;
+	public void setIdpk_persona(Long idpk_persona) {
+		this.idpk_persona = idpk_persona;
 	}
 
-	public String getNIF() {
-		return NIF;
+	public String getNif() {
+		return nif;
 	}
 
-	public void setNIF(String nIF) {
-		NIF = nIF;
+	public void setNif(String nif) {
+		this.nif = nif;
 	}
 
-	public String getNOM() {
-		return NOM;
+	public String getNom() {
+		return nom;
 	}
 
-	public void setNOM(String nOM) {
-		NOM = nOM;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
-	public String getCOGNOM1() {
-		return COGNOM1;
+	public String getCognom1() {
+		return cognom1;
 	}
 
-	public void setCOGNOM1(String cOGNOM1) {
-		COGNOM1 = cOGNOM1;
+	public void setCognom1(String cognom1) {
+		this.cognom1 = cognom1;
 	}
 
-	public String getCOGNOM2() {
-		return COGNOM2;
+	public String getCognom2() {
+		return cognom2;
 	}
 
-	public void setCOGNOM2(String cOGNOM2) {
-		COGNOM2 = cOGNOM2;
+	public void setCognom2(String cognom2) {
+		this.cognom2 = cognom2;
 	}
 
-	public String getTELEFON() {
-		return TELEFON;
+	public String getTelefon() {
+		return telefon;
 	}
 
-	public void setTELEFON(String tELEFON) {
-		TELEFON = tELEFON;
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
 	}
 
-	public String getEMAIL() {
-		return EMAIL;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getADREÇA() {
-		return ADREÇA;
+	public String getAdreça() {
+		return adreça;
 	}
 
-	public void setADREÇA(String aDREÇA) {
-		ADREÇA = aDREÇA;
+	public void setAdreça(String adreça) {
+		this.adreça = adreça;
 	}
 
-	public Integer getIDFK_PROV() {
-		return IDFK_PROV;
+	public Integer getIdfk_prov() {
+		return idfk_prov;
 	}
 
-	public void setIDFK_PROV(Integer iDFK_PROV) {
-		IDFK_PROV = iDFK_PROV;
+	public void setIdfk_prov(Integer idfk_prov) {
+		this.idfk_prov = idfk_prov;
 	}
 
-	public Integer getCODI_POSTAL() {
-		return CODI_POSTAL;
+	public Integer getCodi_postal() {
+		return codi_postal;
 	}
 
-	public void setCODI_POSTAL(Integer cODI_POSTAL) {
-		CODI_POSTAL = cODI_POSTAL;
+	public void setCodi_postal(Integer codi_postal) {
+		this.codi_postal = codi_postal;
 	}
 
-	public String getCREAT_PER() {
-		return CREAT_PER;
+	public String getCreat_per() {
+		return creat_per;
 	}
 
-	public void setCREAT_PER(String cREAT_PER) {
-		CREAT_PER = cREAT_PER;
+	public void setCreat_per(String creat_per) {
+		this.creat_per = creat_per;
 	}
 
-	public Date getDATA_CREACIO() {
-		return DATA_CREACIO;
+	public Date getData_creacio() {
+		return data_creacio;
 	}
 
-	public void setDATA_CREACIO(Date dATA_CREACIO) {
-		DATA_CREACIO = dATA_CREACIO;
+	public void setData_creacio(Date data_creacio) {
+		this.data_creacio = data_creacio;
 	}
 
-	public String getACTUALITZAT_PER() {
-		return ACTUALITZAT_PER;
+	public String getActualitzat_per() {
+		return actualitzat_per;
 	}
 
-	public void setACTUALITZAT_PER(String aCTUALITZAT_PER) {
-		ACTUALITZAT_PER = aCTUALITZAT_PER;
+	public void setActualitzat_per(String actualitzat_per) {
+		this.actualitzat_per = actualitzat_per;
 	}
 
-	public Date getDATA_ACTUALITZACIO() {
-		return DATA_ACTUALITZACIO;
+	public Date getData_actualitzacio() {
+		return data_actualitzacio;
 	}
 
-	public void setDATA_ACTUALITZACIO(Date dATA_ACTUALITZACIO) {
-		DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
-	}
-
-	@Override
-	public String toString() {
-		return "Persona [IDPK_PERSONA=" + IDPK_PERSONA + ", NIF=" + NIF + ", NOM=" + NOM + ", COGNOM1=" + COGNOM1
-				+ ", COGNOM2=" + COGNOM2 + ", TELEFON=" + TELEFON + ", EMAIL=" + EMAIL + ", ADREÇA=" + ADREÇA
-				+ ", IDFK_PROV=" + IDFK_PROV + ", CODI_POSTAL=" + CODI_POSTAL + ", CREAT_PER=" + CREAT_PER
-				+ ", DATA_CREACIO=" + DATA_CREACIO + ", ACTUALITZAT_PER=" + ACTUALITZAT_PER + ", DATA_ACTUALITZACIO="
-				+ DATA_ACTUALITZACIO + "]";
+	public void setData_actualitzacio(Date data_actualitzacio) {
+		this.data_actualitzacio = data_actualitzacio;
 	}
 	
-	
-
 }

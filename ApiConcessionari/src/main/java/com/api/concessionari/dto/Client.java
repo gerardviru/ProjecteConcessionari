@@ -1,43 +1,54 @@
 package com.api.concessionari.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CLIENT")
+@Table(name="GCON_TB_CLIENT")
 
 public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	@Column(name="IDPK_CLIENT", nullable = false)
-	private Long IDPK_CLIENT;
+	@Column(name="idpk_client", nullable = false)
+	private Long idpk_client;
 	
-	@Column(name="IDFK_PERSONA", nullable = false)
-	private Integer IDFK_PERSONA;
+	@Column(name="idfk_persona", nullable = false)
+	private Integer idfk_persona;
 		
-	@Column(name="IDFK_CON", nullable = false)
-	private Integer IDFK_CON;
+	@Column(name="idfk_con", nullable = false)
+	private Integer idfk_con;
 	
-	@Column (name = "CREAT_PER")
-	private String CREAT_PER;
+	@Column (name = "creat_per")
+	private String creat_per;
 	
-	@Column (name = "DATA_CREACIO")
-	private Date DATA_CREACIO;
+	@Column (name = "data_creacio")
+	private Date data_creacio;
 	
-	@Column (name = "ACTUALITZAT_PER")
-	private String ACTUALITZAT_PER;
+	@Column (name = "actualitzat_per")
+	private String actualitzat_per;
 	
-	@Column (name = "DATA_ACTUALITZACIO")
-	private Date DATA_ACTUALITZACIO;
+	@Column (name = "data_actualitzacio")
+	private Date data_actualitzacio;
 	
+	@ManyToOne
+	@JoinColumn(name = "idpk_con")
+	private Concessionari concessionari;
+	
+	@OneToMany
+	@JoinColumn(name = "idfk_client")
+	private List<Venta> venta;
 	
 	public Client() {
 	}
@@ -52,78 +63,85 @@ public class Client {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Client(Long IDPK_CLIENT, Integer IDFK_PERSONA, Integer IDFK_CON, String CREAT_PER, Date DATA_CREACIO, String ACTUALITZAT_PER,Date DATA_ACTUALITZACIO) {
-		this.IDPK_CLIENT = IDPK_CLIENT;
-		this.IDFK_PERSONA = IDFK_PERSONA;
-		this.IDFK_CON = IDFK_CON;
-		this.CREAT_PER = CREAT_PER;
-		this.DATA_CREACIO = DATA_CREACIO;
-		this.ACTUALITZAT_PER =ACTUALITZAT_PER;
-		this.DATA_ACTUALITZACIO = DATA_ACTUALITZACIO;
-		
+	public Client(Long idpk_client, Integer idfk_persona, Integer idfk_con, String creat_per, Date data_creacio,
+			String actualitzat_per, Date data_actualitzacio) {
+		this.idpk_client = idpk_client;
+		this.idfk_persona = idfk_persona;
+		this.idfk_con = idfk_con;
+		this.creat_per = creat_per;
+		this.data_creacio = data_creacio;
+		this.actualitzat_per = actualitzat_per;
+		this.data_actualitzacio = data_actualitzacio;
 	}
 
-	public Long getIDPK_CLIENT() {
-		return IDPK_CLIENT;
+
+	public Long getIdpk_client() {
+		return idpk_client;
 	}
 
-	public void setIDPK_CLIENT(Long iDPK_CLIENT) {
-		IDPK_CLIENT = iDPK_CLIENT;
+
+	public void setIdpk_client(Long idpk_client) {
+		this.idpk_client = idpk_client;
 	}
 
-	public Integer getIDFK_PERSONA() {
-		return IDFK_PERSONA;
+
+	public Integer getIdfk_persona() {
+		return idfk_persona;
 	}
 
-	public void setIDFK_PERSONA(Integer iDFK_PERSONA) {
-		IDFK_PERSONA = iDFK_PERSONA;
+
+	public void setIdfk_persona(Integer idfk_persona) {
+		this.idfk_persona = idfk_persona;
 	}
 
-	public Integer getIDFK_CON() {
-		return IDFK_CON;
+
+	public Integer getIdfk_con() {
+		return idfk_con;
 	}
 
-	public void setIDFK_CON(Integer iDFK_CON) {
-		IDFK_CON = iDFK_CON;
+
+	public void setIdfk_con(Integer idfk_con) {
+		this.idfk_con = idfk_con;
 	}
 
-	public String getCREAT_PER() {
-		return CREAT_PER;
+
+	public String getCreat_per() {
+		return creat_per;
 	}
 
-	public void setCREAT_PER(String cREAT_PER) {
-		CREAT_PER = cREAT_PER;
+
+	public void setCreat_per(String creat_per) {
+		this.creat_per = creat_per;
 	}
 
-	public Date getDATA_CREACIO() {
-		return DATA_CREACIO;
+
+	public Date getData_creacio() {
+		return data_creacio;
 	}
 
-	public void setDATA_CREACIO(Date dATA_CREACIO) {
-		DATA_CREACIO = dATA_CREACIO;
+
+	public void setData_creacio(Date data_creacio) {
+		this.data_creacio = data_creacio;
 	}
 
-	public String getACTUALITZAT_PER() {
-		return ACTUALITZAT_PER;
+
+	public String getActualitzat_per() {
+		return actualitzat_per;
 	}
 
-	public void setACTUALITZAT_PER(String aCTUALITZAT_PER) {
-		ACTUALITZAT_PER = aCTUALITZAT_PER;
+
+	public void setActualitzat_per(String actualitzat_per) {
+		this.actualitzat_per = actualitzat_per;
 	}
 
-	public Date getDATA_ACTUALITZACIO() {
-		return DATA_ACTUALITZACIO;
+
+	public Date getData_actualitzacio() {
+		return data_actualitzacio;
 	}
 
-	public void setDATA_ACTUALITZACIO(Date dATA_ACTUALITZACIO) {
-		DATA_ACTUALITZACIO = dATA_ACTUALITZACIO;
-	}
 
-	@Override
-	public String toString() {
-		return "Client [IDPK_CLIENT=" + IDPK_CLIENT + ", IDFK_PERSONA=" + IDFK_PERSONA + ", IDFK_CON=" + IDFK_CON
-				+ ", CREAT_PER=" + CREAT_PER + ", DATA_CREACIO=" + DATA_CREACIO + ", ACTUALITZAT_PER=" + ACTUALITZAT_PER
-				+ ", DATA_ACTUALITZACIO=" + DATA_ACTUALITZACIO + "]";
+	public void setData_actualitzacio(Date data_actualitzacio) {
+		this.data_actualitzacio = data_actualitzacio;
 	}
 	
 	
