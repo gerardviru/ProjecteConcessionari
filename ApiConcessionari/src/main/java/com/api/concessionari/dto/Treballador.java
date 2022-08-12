@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="GCON_TB_TREBALLADOR")
+@Table(name="gcon_tb_treballador")
 
 public class Treballador {
 	
@@ -26,13 +26,7 @@ public class Treballador {
 	
 	@Column(name="idpk_treb", nullable = false)
 	private Long idpk_treb;
-	
-	@Column(name="idfk_persona", nullable = false)
-	private Integer idfk_persona;
 		
-	@Column(name="idfk_con", nullable = false)
-	private Integer idfk_con;
-	
 	@Column(name="num_seg_soc", nullable = false)
 	private Integer num_seg_soc;
 	
@@ -53,12 +47,12 @@ public class Treballador {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_treb")
+	@JoinColumn(name = "idfk_con")
 	private Concessionari concessionari;
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_treb")
+	@JoinColumn(name = "idfk_persona")
 	private Persona persona;
 	
 	@OneToMany
@@ -82,12 +76,10 @@ public class Treballador {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Treballador(Long idpk_treb, Integer idfk_persona, Integer idfk_con, Integer num_seg_soc, Integer carrec,
+	public Treballador(Long idpk_treb, Integer num_seg_soc, Integer carrec,
 			String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio,
 			Concessionari concessionari, Persona persona, List<Venta> venta) {
 		this.idpk_treb = idpk_treb;
-		this.idfk_persona = idfk_persona;
-		this.idfk_con = idfk_con;
 		this.num_seg_soc = num_seg_soc;
 		this.carrec = carrec;
 		this.creat_per = creat_per;
@@ -105,22 +97,6 @@ public class Treballador {
 
 	public void setIdpk_treb(Long idpk_treb) {
 		this.idpk_treb = idpk_treb;
-	}
-
-	public Integer getIdfk_persona() {
-		return idfk_persona;
-	}
-
-	public void setIdfk_persona(Integer idfk_persona) {
-		this.idfk_persona = idfk_persona;
-	}
-
-	public Integer getIdfk_con() {
-		return idfk_con;
-	}
-
-	public void setIdfk_con(Integer idfk_con) {
-		this.idfk_con = idfk_con;
 	}
 
 	public Integer getNum_seg_soc() {
@@ -189,7 +165,7 @@ public class Treballador {
 
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "venta")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Venta")
 	public List<Venta> getVenta() {
 		return venta;
 	}

@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="GCON_TB_PERFIL")
+@Table(name="gcon_tb_perfil")
 
 public class Perfil {
 	
@@ -21,12 +21,6 @@ public class Perfil {
 	
 	@Column(name="idpk_perfil", nullable = false)
 	private Long idpk_perfil;
-	
-	@Column(name="idfk_persona", nullable = false)
-	private Integer idfk_persona;
-		
-	@Column(name="idfk_rol", nullable = false)
-	private Integer idfk_rol;
 	
 	@Column (name = "creat_per")
 	private String creat_per;
@@ -42,11 +36,11 @@ public class Perfil {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_perfil")
+	@JoinColumn(name = "idfk_persona")
 	private Persona persona;
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_perfil")
+	@JoinColumn(name = "idfk_rol")
 	private Rol rol;
 
 	
@@ -64,11 +58,9 @@ public class Perfil {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Perfil(Long idpk_perfil, Integer idfk_persona, Integer idfk_rol, String creat_per, Date data_creacio,
+	public Perfil(Long idpk_perfil, String creat_per, Date data_creacio,
 			String actualitzat_per, Date data_actualitzacio, Persona persona, Rol rol) {
 		this.idpk_perfil = idpk_perfil;
-		this.idfk_persona = idfk_persona;
-		this.idfk_rol = idfk_rol;
 		this.creat_per = creat_per;
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
@@ -83,22 +75,6 @@ public class Perfil {
 
 	public void setIdpk_perfil(Long idpk_perfil) {
 		this.idpk_perfil = idpk_perfil;
-	}
-
-	public Integer getIdfk_persona() {
-		return idfk_persona;
-	}
-
-	public void setIdfk_persona(Integer idfk_persona) {
-		this.idfk_persona = idfk_persona;
-	}
-
-	public Integer getIdfk_rol() {
-		return idfk_rol;
-	}
-
-	public void setIdfk_rol(Integer idfk_rol) {
-		this.idfk_rol = idfk_rol;
 	}
 
 	public String getCreat_per() {

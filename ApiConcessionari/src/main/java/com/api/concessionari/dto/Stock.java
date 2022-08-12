@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="GCON_TB_STOCK")
+@Table(name="gcon_tb_stock")
 
 public class Stock {
 
@@ -21,13 +21,7 @@ public class Stock {
 	
 	@Column(name="idpk_stock", nullable = false)
 	private Long idpk_stock;
-	
-	@Column(name="idfk_con", nullable = false)
-	private Integer idfk_con;
-		
-	@Column(name="idfk_vehicle", nullable = false)
-	private Integer idfk_vehicle;
-	
+
 	@Column(name="unitats", nullable = false)
 	private Integer unitats;
 	
@@ -48,11 +42,11 @@ public class Stock {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_stock")
+	@JoinColumn(name = "idfk_con")
 	private Concessionari concessionari;
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_stock")
+	@JoinColumn(name = "idfk_vehicle")
 	private Vehicle vehicle;
 	
 	
@@ -72,12 +66,10 @@ public class Stock {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Stock(Long idpk_stock, Integer idfk_con, Integer idfk_vehicle, Integer unitats, Integer preu,
+	public Stock(Long idpk_stock, Integer unitats, Integer preu,
 			String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio,
 			Concessionari concessionari, Vehicle vehicle) {
 		this.idpk_stock = idpk_stock;
-		this.idfk_con = idfk_con;
-		this.idfk_vehicle = idfk_vehicle;
 		this.unitats = unitats;
 		this.preu = preu;
 		this.creat_per = creat_per;
@@ -94,22 +86,6 @@ public class Stock {
 
 	public void setIdpk_stock(Long idpk_stock) {
 		this.idpk_stock = idpk_stock;
-	}
-
-	public Integer getIdfk_con() {
-		return idfk_con;
-	}
-
-	public void setIdfk_con(Integer idfk_con) {
-		this.idfk_con = idfk_con;
-	}
-
-	public Integer getIdfk_vehicle() {
-		return idfk_vehicle;
-	}
-
-	public void setIdfk_vehicle(Integer idfk_vehicle) {
-		this.idfk_vehicle = idfk_vehicle;
 	}
 
 	public Integer getUnitats() {

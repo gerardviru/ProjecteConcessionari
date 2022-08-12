@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="GCON_TB_CONCESSIONARI")
+@Table(name="gcon_tb_concessionari")
 
 public class Concessionari {
 	
@@ -42,9 +42,6 @@ public class Concessionari {
 	@Column (name = "adreça")
 	private String adreça;
 	
-	@Column (name = "idfk_prov", nullable = false)
-	private Integer idfk_prov;
-	
 	@Column (name = "codi_postal")
 	private Integer codi_postal;
 	
@@ -62,7 +59,7 @@ public class Concessionari {
 	
 		
 	@ManyToOne
-	@JoinColumn(name = "idpk_con")
+	@JoinColumn(name = "idfk_prov")
 	private Provincia provincia;
 	
 	@OneToMany
@@ -101,7 +98,7 @@ public class Concessionari {
 	
 	
 	public Concessionari(Long idpk_con, String cif, String cintnom, String telefon, String email, String adreça,
-			Integer idfk_prov, Integer codi_postal, String creat_per, Date data_creacio, String actualitzat_per,
+			Integer codi_postal, String creat_per, Date data_creacio, String actualitzat_per,
 			Date data_actualitzacio, Provincia provincia, List<Stock> stock, List<Venta> venta,
 			List<Treballador> treballador, List<Client> client) {
 		this.idpk_con = idpk_con;
@@ -110,7 +107,6 @@ public class Concessionari {
 		this.telefon = telefon;
 		this.email = email;
 		this.adreça = adreça;
-		this.idfk_prov = idfk_prov;
 		this.codi_postal = codi_postal;
 		this.creat_per = creat_per;
 		this.data_creacio = data_creacio;
@@ -171,14 +167,6 @@ public class Concessionari {
 		this.adreça = adreça;
 	}
 
-	public Integer getIdfk_prov() {
-		return idfk_prov;
-	}
-
-	public void setIdfk_prov(Integer idfk_prov) {
-		this.idfk_prov = idfk_prov;
-	}
-
 	public Integer getCodi_postal() {
 		return codi_postal;
 	}
@@ -228,7 +216,7 @@ public class Concessionari {
 	}
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Stock")
 	public List<Stock> getStock() {
 		return stock;
 	}
@@ -238,7 +226,7 @@ public class Concessionari {
 	}
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "venta")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Venta")
 	public List<Venta> getVenta() {
 		return venta;
 	}
@@ -249,7 +237,7 @@ public class Concessionari {
 
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "treballador")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Treballador")
 	public List<Treballador> getTreballador() {
 		return treballador;
 	}
@@ -260,7 +248,7 @@ public class Concessionari {
 
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Client")
 	public List<Client> getClient() {
 		return client;
 	}

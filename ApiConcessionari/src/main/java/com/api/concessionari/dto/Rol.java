@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="GCON_TM_ROL")
+@Table(name="gcon_tm_rol")
 
 public class Rol {
 	

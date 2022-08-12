@@ -2,6 +2,7 @@ package com.api.concessionari.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import com.api.concessionari.dao.IPersonaDAO;
 import com.api.concessionari.dto.Persona;
@@ -43,12 +44,4 @@ public class PersonaServiceImpl implements IPersonaService{
 		
 	}
 	
-	@Override
-	public Persona getPersonaByNIF(String NIF) {
-		// TODO Auto-generated method stub
-		return iPersonaDAO.findByNIF(NIF);
-	}
-
-	
-
 }

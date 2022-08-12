@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="GCON_TB_VENTA")
+@Table(name="gcon_tb_venta")
 
 public class Venta {
 
@@ -21,18 +21,6 @@ public class Venta {
 	
 	@Column(name="idpk_venta", nullable = false)
 	private Long idpk_venta;
-	
-	@Column(name="idfk_con", nullable = false)
-	private Integer idfk_con;
-		
-	@Column(name="idfk_vehicle", nullable = false)
-	private Integer idfk_vehicle;
-	
-	@Column(name="idfk_treb", nullable = false)
-	private Integer idfk_treb;
-	
-	@Column(name="idfk_client", nullable = false)
-	private Integer idfk_client;
 	
 	@Column(name="descompte")
 	private Integer descompte;
@@ -60,19 +48,19 @@ public class Venta {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_venta")
+	@JoinColumn(name = "idfk_client")
 	private Client client;
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_venta")
+	@JoinColumn(name = "idfk_con")
 	private Concessionari concessionari;
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_venta")
+	@JoinColumn(name = "idfk_vehicle")
 	private Vehicle vehicle;
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_venta")
+	@JoinColumn(name = "idfk_treb")
 	private Treballador treballador;
 	
 	
@@ -97,15 +85,10 @@ public class Venta {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Venta(Long idpk_venta, Integer idfk_con, Integer idfk_vehicle, Integer idfk_treb, Integer idfk_client,
-			Integer descompte, Integer iva, Integer preu, Integer preu_final, String creat_per, Date data_creacio,
+	public Venta(Long idpk_venta, Integer descompte, Integer iva, Integer preu, Integer preu_final, String creat_per, Date data_creacio,
 			String actualitzat_per, Date data_actualitzacio, Client client, Concessionari concessionari,
 			Vehicle vehicle, Treballador treballador) {
 		this.idpk_venta = idpk_venta;
-		this.idfk_con = idfk_con;
-		this.idfk_vehicle = idfk_vehicle;
-		this.idfk_treb = idfk_treb;
-		this.idfk_client = idfk_client;
 		this.descompte = descompte;
 		this.iva = iva;
 		this.preu = preu;
@@ -129,47 +112,6 @@ public class Venta {
 	public void setIdpk_venta(Long idpk_venta) {
 		this.idpk_venta = idpk_venta;
 	}
-
-
-	public Integer getIdfk_con() {
-		return idfk_con;
-	}
-
-
-	public void setIdfk_con(Integer idfk_con) {
-		this.idfk_con = idfk_con;
-	}
-
-
-	public Integer getIdfk_vehicle() {
-		return idfk_vehicle;
-	}
-
-
-	public void setIdfk_vehicle(Integer idfk_vehicle) {
-		this.idfk_vehicle = idfk_vehicle;
-	}
-
-
-	public Integer getIdfk_treb() {
-		return idfk_treb;
-	}
-
-
-	public void setIdfk_treb(Integer idfk_treb) {
-		this.idfk_treb = idfk_treb;
-	}
-
-
-	public Integer getIdfk_client() {
-		return idfk_client;
-	}
-
-
-	public void setIdfk_client(Integer idfk_client) {
-		this.idfk_client = idfk_client;
-	}
-
 
 	public Integer getDescompte() {
 		return descompte;

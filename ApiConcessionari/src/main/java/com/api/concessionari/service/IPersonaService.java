@@ -21,6 +21,4 @@ public interface IPersonaService {
 	// Elimina el cuentas DELETE
 	public void deletePersona(Long IDPK_PERSONA);
 	
-	// Cuenta por NIF
-	public Persona getPersonaByNIF(String NIF);
 }

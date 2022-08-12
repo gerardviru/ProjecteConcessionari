@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="GCON_TB_PERSONA")
+@Table(name="gcon_tb_persona")
 public class Persona {
 	
 	@Id
@@ -46,10 +46,7 @@ public class Persona {
 	
 	@Column (name = "adreça")
 	private String adreça;
-	
-	@Column (name = "idfk_prov", nullable = false)
-	private Integer idfk_prov;
-	
+
 	@Column (name = "codi_postal")
 	private Integer codi_postal;
 	
@@ -67,7 +64,7 @@ public class Persona {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_persona")
+	@JoinColumn(name = "idfk_persona")
 	private Provincia provincia;
 	
 	@OneToMany
@@ -109,7 +106,7 @@ public class Persona {
 	 */
 	
 	public Persona(Long idpk_persona, String nif, String nom, String cognom1, String cognom2, String telefon,
-			String email, String adreça, Integer idfk_prov, Integer codi_postal, String creat_per, Date data_creacio,
+			String email, String adreça, Integer codi_postal, String creat_per, Date data_creacio,
 			String actualitzat_per, Date data_actualitzacio, Provincia provincia, List<Usuari> usuari,
 			List<Treballador> treballador, List<Perfil> perfil, List<Client> client) {
 		this.idpk_persona = idpk_persona;
@@ -120,7 +117,6 @@ public class Persona {
 		this.telefon = telefon;
 		this.email = email;
 		this.adreça = adreça;
-		this.idfk_prov = idfk_prov;
 		this.codi_postal = codi_postal;
 		this.creat_per = creat_per;
 		this.data_creacio = data_creacio;
@@ -195,14 +191,6 @@ public class Persona {
 
 	public void setAdreça(String adreça) {
 		this.adreça = adreça;
-	}
-
-	public Integer getIdfk_prov() {
-		return idfk_prov;
-	}
-
-	public void setIdfk_prov(Integer idfk_prov) {
-		this.idfk_prov = idfk_prov;
 	}
 
 	public Integer getCodi_postal() {

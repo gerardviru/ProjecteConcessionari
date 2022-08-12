@@ -5,6 +5,5 @@ import com.api.concessionari.dto.Persona;
 
 public interface IPersonaDAO extends JpaRepository <Persona, Long> {
 
-	Persona findByNIF(String NIF);
 
 }

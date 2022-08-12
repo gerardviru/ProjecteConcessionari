@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="GCON_TB_USUARI")
+@Table(name="gcon_tb_usuari")
 
 public class Usuari {
 	
@@ -21,9 +21,6 @@ public class Usuari {
 	
 	@Column(name="idpk_usuari", nullable = false)
 	private Long idpk_usuari;
-	
-	@Column(name="idfk_persona", nullable = false)
-	private Integer idfk_persona;
 		
 	@Column(name="username", nullable = false)
 	private String username;
@@ -51,7 +48,7 @@ public class Usuari {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_usuari")
+	@JoinColumn(name = "idfk_persona")
 	private Persona persona;
 	
 	
@@ -72,11 +69,10 @@ public class Usuari {
 	 * @param DATA_ACTUALITZACIO
 	 */
 
-	public Usuari(Long idpk_usuari, Integer idfk_persona, String username, String password, Integer intents,
+	public Usuari(Long idpk_usuari, String username, String password, Integer intents,
 			String bloquejat, String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio,
 			Persona persona) {
 		this.idpk_usuari = idpk_usuari;
-		this.idfk_persona = idfk_persona;
 		this.username = username;
 		this.password = password;
 		this.intents = intents;
@@ -94,14 +90,6 @@ public class Usuari {
 
 	public void setIdpk_usuari(Long idpk_usuari) {
 		this.idpk_usuari = idpk_usuari;
-	}
-
-	public Integer getIdfk_persona() {
-		return idfk_persona;
-	}
-
-	public void setIdfk_persona(Integer idfk_persona) {
-		this.idfk_persona = idfk_persona;
 	}
 
 	public String getUsername() {

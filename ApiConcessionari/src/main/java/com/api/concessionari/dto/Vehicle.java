@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="GCON_TB_VEHICLE")
+@Table(name="gcon_tb_vehicle")
 
 public class Vehicle {
 
