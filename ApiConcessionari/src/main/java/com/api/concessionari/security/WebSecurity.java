@@ -53,11 +53,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests()
 			.antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
-//			.antMatchers(HttpMethod.POST, "/api/clientes/guest").permitAll()
-//			.antMatchers(HttpMethod.POST, "/api/empresas/guest").permitAll()
-//			.antMatchers(HttpMethod.GET, "/api/hoteles/ciudad/**").permitAll()
-//			.antMatchers(HttpMethod.GET, "/api/file/**").permitAll()
-//			.antMatchers(HttpMethod.POST, "/api/hoteles/file/add/**").permitAll()
 			.anyRequest().authenticated()
 //			.anyRequest().permitAll()
 //			.anyRequest().hasAuthority("ROLE_ADMIN")
@@ -76,7 +71,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS", "PUT", "DELETE"));
-		corsConfiguration.setAllowedOrigins(Arrays.asList("*", "https://deploy.d2empnwp4tranl.amplifyapp.com/", "http://deploy.d2empnwp4tranl.amplifyapp.com/"));
+		corsConfiguration.setAllowedOrigins(Arrays.asList("*", "http://localhost:4200/signin"));
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues().combine(corsConfiguration));
 		return source;

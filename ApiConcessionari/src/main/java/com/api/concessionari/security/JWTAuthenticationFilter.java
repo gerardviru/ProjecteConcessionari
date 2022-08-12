@@ -56,12 +56,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				.claim("roles", auth.getAuthorities().iterator().next().getAuthority())
 				.setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_TIME))
 				.signWith(SignatureAlgorithm.HS512, SUPER_SECRET_KEY).compact();
-
-		// devuelve token por body y role por cabecera
-		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " " + token);// devuelve token por cabecera
-		response.getWriter().write("{\"token\": \"" + token + auth.getAuthorities().iterator().next().getAuthority() + comillas + "}");
-
+		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " " + token);//devuelve token por cabecera
+		response.getWriter().write("{\"token\": \"" + token + "\"}");//devuelve token por body
 		System.out.println(response.getHeader(HEADER_AUTHORIZACION_KEY));
+		System.out.println("AUTHENTICACION");
+	
 
 	}
 

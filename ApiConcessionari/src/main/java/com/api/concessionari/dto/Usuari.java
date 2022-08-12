@@ -1,6 +1,9 @@
 package com.api.concessionari.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,10 +14,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
 @Table(name="gcon_tb_usuari")
 
-public class Usuari {
+public class Usuari implements UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +34,9 @@ public class Usuari {
 	
 	@Column(name="password", nullable = false)
 	private String password;
+	
+	@Column(name="rol")
+	private String rol;
 	
 	@Column(name="intents", nullable = false)
 	private Integer intents;
@@ -52,6 +62,14 @@ public class Usuari {
 	private Persona persona;
 	
 	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> roles = new ArrayList<>();
+		roles.add(new SimpleGrantedAuthority(this.rol));
+		return roles;
+	}
+	
+	
 	public Usuari() {
 		
 	}
@@ -61,6 +79,7 @@ public class Usuari {
 	 * @param IDFK_PERSONA
 	 * @param USERNAME
 	 * @param PASSWORD
+	 * @param ROL
 	 * @param INTENTS
 	 * @param BLOQUEJAT
 	 * @param CREAT_PER
@@ -69,12 +88,13 @@ public class Usuari {
 	 * @param DATA_ACTUALITZACIO
 	 */
 
-	public Usuari(Long idpk_usuari, String username, String password, Integer intents,
+	public Usuari(Long idpk_usuari, String username, String password, String rol, Integer intents,
 			String bloquejat, String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio,
 			Persona persona) {
 		this.idpk_usuari = idpk_usuari;
 		this.username = username;
 		this.password = password;
+		this.rol = rol;
 		this.intents = intents;
 		this.bloquejat = bloquejat;
 		this.creat_per = creat_per;
@@ -107,6 +127,16 @@ public class Usuari {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getRol() {
+		return rol;
+	}
+
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 
 	public Integer getIntents() {
 		return intents;
@@ -162,6 +192,30 @@ public class Usuari {
 
 	public void setPersona(Persona persona) {
 		this.persona = persona;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	
