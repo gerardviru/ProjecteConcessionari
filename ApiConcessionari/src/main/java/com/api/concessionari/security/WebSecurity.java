@@ -30,7 +30,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	private UserDetailsService userDetailsService;
@@ -47,6 +47,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	public SimpleCORSFilter myCorsFilter;
+	
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		/*

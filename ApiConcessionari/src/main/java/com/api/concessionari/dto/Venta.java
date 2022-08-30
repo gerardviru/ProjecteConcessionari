@@ -18,8 +18,6 @@ public class Venta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="idpk_venta", nullable = false)
 	private Long idpk_venta;
 	
 	@Column(name="descompte")

@@ -23,15 +23,7 @@ public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="idpk_client", nullable = false)
 	private Long idpk_client;
-	
-	@Column(name="idfk_persona", nullable = false)
-	private Integer idfk_persona;
-		
-	@Column(name="idfk_con", nullable = false)
-	private Integer idfk_con;
 	
 	@Column (name = "creat_per")
 	private String creat_per;
@@ -46,7 +38,7 @@ public class Client {
 	private Date data_actualitzacio;
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_con")
+	@JoinColumn(name = "idfk_con")
 	private Concessionari concessionari;
 	
 	@OneToMany
@@ -54,7 +46,7 @@ public class Client {
 	private List<Venta> venta;
 	
 	@ManyToOne
-	@JoinColumn(name = "idpk_persona")
+	@JoinColumn(name = "idfk_persona")
 	private Persona persona;
 	
 	public Client() {
@@ -72,12 +64,10 @@ public class Client {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Client(Long idpk_client, Integer idfk_persona, Integer idfk_con, String creat_per, Date data_creacio,
+	public Client(Long idpk_client,String creat_per, Date data_creacio,
 			String actualitzat_per, Date data_actualitzacio, Concessionari concessionari, List<Venta> venta,
 			Persona persona) {
 		this.idpk_client = idpk_client;
-		this.idfk_persona = idfk_persona;
-		this.idfk_con = idfk_con;
 		this.creat_per = creat_per;
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
@@ -98,31 +88,6 @@ public class Client {
 	public void setIdpk_client(Long idpk_client) {
 		this.idpk_client = idpk_client;
 	}
-
-
-
-	public Integer getIdfk_persona() {
-		return idfk_persona;
-	}
-
-
-
-	public void setIdfk_persona(Integer idfk_persona) {
-		this.idfk_persona = idfk_persona;
-	}
-
-
-
-	public Integer getIdfk_con() {
-		return idfk_con;
-	}
-
-
-
-	public void setIdfk_con(Integer idfk_con) {
-		this.idfk_con = idfk_con;
-	}
-
 
 
 	public String getCreat_per() {

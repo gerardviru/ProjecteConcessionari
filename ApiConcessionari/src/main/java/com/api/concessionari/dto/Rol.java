@@ -22,8 +22,6 @@ public class Rol {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="idpk_rol", nullable = false)
 	private Long idpk_rol;
 	
 	@Column(name="codi_rol", nullable = false)
@@ -46,7 +44,7 @@ public class Rol {
 	
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_perfil")
+	@JoinColumn(name = "idfk_rol")
 	private List<Perfil> perfil;
 
 

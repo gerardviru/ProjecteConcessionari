@@ -18,8 +18,6 @@ public class Stock {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="idpk_stock", nullable = false)
 	private Long idpk_stock;
 
 	@Column(name="unitats", nullable = false)

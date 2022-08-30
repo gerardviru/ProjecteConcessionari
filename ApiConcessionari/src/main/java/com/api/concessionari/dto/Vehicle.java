@@ -22,8 +22,6 @@ public class Vehicle {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="idpk_vehicle", nullable = false)
 	private Long idpk_vehicle;
 	
 	@Column(name="marca", nullable = false)
@@ -52,11 +50,11 @@ public class Vehicle {
 	
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_venta")
+	@JoinColumn(name = "idfk_vehicle")
 	private List<Venta> venta;
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_stock")
+	@JoinColumn(name = "idfk_vehicle")
 	private List<Stock> stock;
 	
 	

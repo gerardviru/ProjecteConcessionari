@@ -1,7 +1,6 @@
 package com.api.concessionari.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.api.concessionari.dao.IUsuariDAO;
 import com.api.concessionari.dto.Usuari;
 import com.api.concessionari.service.UsuariServiceImpl;
@@ -30,20 +28,11 @@ public class UsuariController {
 
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	public UsuariController() {
-		
-	}
-	
-	
-	
-	public UsuariController(IUsuariDAO usuariDAO, BCryptPasswordEncoder bCryptPasswordEncoder,
-			UsuariServiceImpl usuariServiceImpl) {
-		this.usuariDAO = usuariDAO;
+	public UsuariController(IUsuariDAO UsuariDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
+		this.usuariDAO = UsuariDAO;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-		this.usuariServiceImpl = usuariServiceImpl;
 	}
-
-
+	
 	@Autowired
 	UsuariServiceImpl usuariServiceImpl;
 	
@@ -61,52 +50,53 @@ public class UsuariController {
 	
 	@GetMapping("/usuari")
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-	public List<Usuari> listarGcon_tb_usuaris(){
+	public List<Usuari> listarGcon_tb_usuari(){
 		return usuariServiceImpl.listarUsuari();
 	}
 	
 
 	@PostMapping("/usuari")
-	public Usuari salvarGcon_tb_usuari(@RequestBody Usuari usuari) {
-		usuari.setPassword(bCryptPasswordEncoder.encode(usuari.getPassword()));
-		usuariDAO.save(usuari);
+	public Usuari salvarGcon_tb_usuario(@RequestBody Usuari usuario) {
+		usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
+		usuariDAO.save(usuario);
 		
-		return usuari;
+		return usuario;
 	}
 	
 	
 	@GetMapping("/usuari/{id}")
-	public Usuari gcon_tb_usuariXID(@PathVariable(name="id") Long id) {
+	public Usuari gcon_tb_usuari(@PathVariable(name="id") Long idpk_usuari) {
 		
 		
-		Usuari usuari_xid= new Usuari();
+		Usuari usuari= new Usuari();
 		
-		usuari_xid=usuariServiceImpl.getById(id);
+		usuari=usuariServiceImpl.getById(idpk_usuari);
 		
-		return usuari_xid;
+				//System.out.println("Gcon_tb_usuario XID: "+Gcon_tb_usuario_xid);
+		
+		return usuari;
 	}
 	
-	@PutMapping("/usuari/{id}")
-	public Usuari actualizarGcon_tb_usuari(@PathVariable(name="id")Long id,@RequestBody Usuari usuari) {
+	@PutMapping("/usuario/{id}")
+	public Usuari actualizarGcon_tb_usuario(@PathVariable(name="id")Long idpk_usuari,@RequestBody Usuari usuari) {
 		
-		Usuari usuari_seleccionado= new Usuari();
-		Usuari usuari_actualizado= new Usuari();
+		Usuari usuario_seleccionado= new Usuari();
+		Usuari usuario_actualizado= new Usuari();
 		
-		usuari_seleccionado= usuariServiceImpl.getById(id);
+		usuario_seleccionado= usuariServiceImpl.getById(idpk_usuari);
 		
-		usuari_seleccionado.setUsername(usuari.getUsername());
-		usuari_seleccionado.setPassword(usuari.getPassword());
-		usuari_seleccionado.setRol(usuari.getRol());
+		usuario_seleccionado.setUsername(usuari.getUsername());
+		usuario_seleccionado.setPassword(usuari.getPassword());
+		usuario_seleccionado.setRol(usuari.getRol());
 		
 	
-		usuari_actualizado = usuariServiceImpl.updateUsuari(usuari_seleccionado);
+		usuario_actualizado = usuariServiceImpl.updateUsuari(usuario_seleccionado);
 		
-		return usuari_actualizado;
+		return usuario_actualizado;
 	}
 	
-	@DeleteMapping("/usuari/{id}")
-	public void eleiminarGcon_tb_usuari(@PathVariable(name="id")Long id) {
-		usuariServiceImpl.deleteUsuari(id);
+	@DeleteMapping("/usuario/{id}")
+	public void eleiminarGcon_tb_usuario(@PathVariable(name="id")Long idpk_usuari) {
+		usuariServiceImpl.deleteUsuari(idpk_usuari);
 	}
 }
-

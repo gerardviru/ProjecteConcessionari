@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -23,20 +24,20 @@ public class Persona {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idpk_persona;
-	
-	@Column(name="nif", nullable = false)
+
+	@Column(name="nif")
 	private String nif;
 		
-	@Column(name="nom", nullable = false)
+	@Column(name="nom")
 	private String nom;
 	
-	@Column (name = "cognom1", nullable = false)
+	@Column (name = "cognom1")
 	private String cognom1;
 	
 	@Column (name = "cognom2")
 	private String cognom2;
 	
-	@Column (name = "telefon", nullable = false)
+	@Column (name = "telefon")
 	private String telefon;
 	
 	@Column (name = "email")
@@ -64,7 +65,7 @@ public class Persona {
 	@ManyToOne
 	@JoinColumn(name = "idfk_prov")
 	private Provincia provincia;
-	
+
 	@OneToMany
 	@JoinColumn(name = "idfk_persona")
 	private List<Usuari> usuari;
@@ -82,52 +83,14 @@ public class Persona {
 	private List<Client> client;
 	
 
-	
 	public Persona() {
 	}
 
-	/**
-	 * @param IDPK_PERSONA
-	 * @param NIF
-	 * @param NOM
-	 * @param COGNOM1
-	 * @param COGNOM2
-	 * @param TELEFON
-	 * @param EMAIL
-	 * @param ADREÇA
-	 * @param IDFK_PROV
-	 * @param CODI_POSTAL
-	 * @param CREAT_PER
-	 * @param DATA_CREACIO
-	 * @param ACTUALITZAT_PER
-	 * @param DATA_ACTUALITZACIO
-	 */
-	
-	
 
 	public Long getIdpk_persona() {
 		return idpk_persona;
 	}
 
-	public Persona(Long idpk_persona, String nif, String nom, String cognom1, String cognom2, String telefon,
-			String email, String adreça, Integer codi_postal, String creat_per, Date data_creacio,
-			String actualitzat_per, Date data_actualitzacio, Provincia provincia, List<Usuari> usuari) {
-		this.idpk_persona = idpk_persona;
-		this.nif = nif;
-		this.nom = nom;
-		this.cognom1 = cognom1;
-		this.cognom2 = cognom2;
-		this.telefon = telefon;
-		this.email = email;
-		this.adreça = adreça;
-		this.codi_postal = codi_postal;
-		this.creat_per = creat_per;
-		this.data_creacio = data_creacio;
-		this.actualitzat_per = actualitzat_per;
-		this.data_actualitzacio = data_actualitzacio;
-		this.provincia = provincia;
-		this.usuari = usuari;
-	}
 
 	public void setIdpk_persona(Long idpk_persona) {
 		this.idpk_persona = idpk_persona;
@@ -228,7 +191,7 @@ public class Persona {
 	public void setData_actualitzacio(Date data_actualitzacio) {
 		this.data_actualitzacio = data_actualitzacio;
 	}
-
+	
 	public Provincia getProvincia() {
 		return provincia;
 	}
@@ -276,8 +239,7 @@ public class Persona {
 	public void setClient(List<Client> client) {
 		this.client = client;
 	}
-	
-	
+
 
 	
 }

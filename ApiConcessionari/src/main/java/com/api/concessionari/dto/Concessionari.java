@@ -23,8 +23,6 @@ public class Concessionari {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="idpk_con", nullable = false)
 	private Long idpk_con;
 	
 	@Column(name="cif", nullable = false)
@@ -63,19 +61,19 @@ public class Concessionari {
 	private Provincia provincia;
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_stock")
+	@JoinColumn(name = "idfk_con")
 	private List<Stock> stock;
 		
 	@OneToMany
-	@JoinColumn(name = "idfk_venta")
+	@JoinColumn(name = "idfk_con")
 	private List<Venta> venta;
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_treb")
+	@JoinColumn(name = "idfk_con")
 	private List<Treballador> treballador;
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_client")
+	@JoinColumn(name = "idfk_con")
 	private List<Client> client;
 	
 	public Concessionari() {

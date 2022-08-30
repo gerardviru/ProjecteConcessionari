@@ -18,8 +18,6 @@ public class Perfil {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="idpk_perfil", nullable = false)
 	private Long idpk_perfil;
 	
 	@Column (name = "creat_per")
@@ -57,9 +55,10 @@ public class Perfil {
 	 * @param ACTUALITZAT_PER
 	 * @param DATA_ACTUALITZACIO
 	 */
-	
-	public Perfil(Long idpk_perfil, String creat_per, Date data_creacio,
-			String actualitzat_per, Date data_actualitzacio, Persona persona, Rol rol) {
+
+
+	public Perfil(Long idpk_perfil, String creat_per, Date data_creacio, String actualitzat_per,
+			Date data_actualitzacio, Persona persona, Rol rol) {
 		this.idpk_perfil = idpk_perfil;
 		this.creat_per = creat_per;
 		this.data_creacio = data_creacio;
@@ -125,5 +124,5 @@ public class Perfil {
 		this.rol = rol;
 	}
 	
-	
+
 }

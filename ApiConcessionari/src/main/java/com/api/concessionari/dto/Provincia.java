@@ -22,8 +22,6 @@ public class Provincia {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="idpk_prov", nullable = false)
 	private Long idpk_prov;
 	
 	@Column(name="codi_prov", nullable = false)
@@ -45,11 +43,11 @@ public class Provincia {
 	private Date data_actualitzacio;
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_concessionari")
+	@JoinColumn(name = "idfk_prov")
 	private List<Concessionari> concessionari;
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_persona")
+	@JoinColumn(name = "idfk_prov")
 	private List<Persona> persona;
 	
 	

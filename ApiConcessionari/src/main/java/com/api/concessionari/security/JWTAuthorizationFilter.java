@@ -59,7 +59,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 				System.out.println("AUTHORIZATION");
 
 				  Collection<SimpleGrantedAuthority> authorities =
-	                        Arrays.stream(claims.get("roles").toString().split(","))
+	                        Arrays.stream(claims.get("rol").toString().split(","))
 	                                .map(SimpleGrantedAuthority::new)
 	                                .collect(Collectors.toList());
 				System.out.println(user);

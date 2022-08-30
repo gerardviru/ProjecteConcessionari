@@ -23,15 +23,13 @@ public class Treballador {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="idpk_treb", nullable = false)
 	private Long idpk_treb;
 		
 	@Column(name="num_seg_soc", nullable = false)
 	private Integer num_seg_soc;
 	
 	@Column(name="carrec", nullable = false)
-	private Integer carrec;
+	private String carrec;
 	
 	@Column (name = "creat_per")
 	private String creat_per;
@@ -56,7 +54,7 @@ public class Treballador {
 	private Persona persona;
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_venta")
+	@JoinColumn(name = "idfk_treb")
 	private List<Venta> venta;
 	
 	
@@ -76,7 +74,7 @@ public class Treballador {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Treballador(Long idpk_treb, Integer num_seg_soc, Integer carrec,
+	public Treballador(Long idpk_treb, Integer num_seg_soc, String carrec,
 			String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio,
 			Concessionari concessionari, Persona persona, List<Venta> venta) {
 		this.idpk_treb = idpk_treb;
@@ -107,11 +105,11 @@ public class Treballador {
 		this.num_seg_soc = num_seg_soc;
 	}
 
-	public Integer getCarrec() {
+	public String getCarrec() {
 		return carrec;
 	}
 
-	public void setCarrec(Integer carrec) {
+	public void setCarrec(String carrec) {
 		this.carrec = carrec;
 	}
 
