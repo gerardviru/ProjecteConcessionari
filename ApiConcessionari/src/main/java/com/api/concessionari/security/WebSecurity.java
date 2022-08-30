@@ -14,6 +14,7 @@ import javax.servlet.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -35,7 +36,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	private UserDetailsService userDetailsService;
 	private Filter simpleCorsFilter;
 
-	public WebSecurity(UserDetailsService userDetailsService) {
+	public WebSecurity(@Lazy UserDetailsService userDetailsService) {
 		this.userDetailsService = userDetailsService;
 	}
 
