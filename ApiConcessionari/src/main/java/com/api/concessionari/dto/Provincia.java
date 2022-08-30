@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="gcon_tm_provinca")
+@Table(name="gcon_tm_provincia")
 
 public class Provincia {
 	
@@ -32,7 +32,7 @@ public class Provincia {
 	@Column(name="nom_prov", nullable = false)
 	private String nom_prov;
 	
-	@Column (name = "creat_per")
+	@Column (name = "create_per")
 	private String creat_per;
 	
 	@Column (name = "data_creacio")

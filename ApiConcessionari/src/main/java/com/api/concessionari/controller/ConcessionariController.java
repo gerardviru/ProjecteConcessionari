@@ -3,6 +3,7 @@ package com.api.concessionari.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,12 +30,14 @@ public class ConcessionariController {
 	
 	// Get all
 	@GetMapping("/concessionari")
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public List<Concessionari> listarConcessionaris() {
 		return concessionariServiceImpl.listarConcessionari();
 	}
 
 	// Get concessionari by id
 	@GetMapping("/concessionari/{id}")
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public Concessionari listarPorId(@PathVariable(name = "id") Long idpk_con) {
 		return concessionariServiceImpl.getById(idpk_con);
 	}
@@ -42,12 +45,14 @@ public class ConcessionariController {
 	
 	// Add Concessionari
 	@PostMapping("/concessionari")
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public Concessionari addNewConcessionari(@RequestBody Concessionari concessionari) {
 		return concessionariServiceImpl.saveConcessionari(concessionari);
 	}
 	
 	// Update Concessionari
 	@PutMapping("/concessionari/{id}")
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public Concessionari updateConcessionari(@PathVariable(name = "id") Long idpk_con, @RequestBody Concessionari concessionari) {
 
 		Concessionari concessionari_seleccionada = new Concessionari();
@@ -76,6 +81,7 @@ public class ConcessionariController {
 
 	// Delete concessionari
 	@DeleteMapping("/concessionari/{id}")
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public void deleteConcessionari(@PathVariable(name = "id") Long idpk_con) {
 		concessionariServiceImpl.deleteConcessionari(idpk_con);
 	}

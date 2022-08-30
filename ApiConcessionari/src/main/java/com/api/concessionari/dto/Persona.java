@@ -22,8 +22,6 @@ public class Persona {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="idpk_persona", nullable = false)
 	private Long idpk_persona;
 	
 	@Column(name="nif", nullable = false)
@@ -64,23 +62,23 @@ public class Persona {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "idfk_persona")
+	@JoinColumn(name = "idfk_prov")
 	private Provincia provincia;
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_usuari")
+	@JoinColumn(name = "idfk_persona")
 	private List<Usuari> usuari;
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_treb")
+	@JoinColumn(name = "idfk_persona")
 	private List<Treballador> treballador;
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_perfil")
+	@JoinColumn(name = "idfk_persona")
 	private List<Perfil> perfil;
 	
 	@OneToMany
-	@JoinColumn(name = "idfk_client")
+	@JoinColumn(name = "idfk_persona")
 	private List<Client> client;
 	
 
@@ -105,10 +103,15 @@ public class Persona {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
+	
+
+	public Long getIdpk_persona() {
+		return idpk_persona;
+	}
+
 	public Persona(Long idpk_persona, String nif, String nom, String cognom1, String cognom2, String telefon,
 			String email, String adreça, Integer codi_postal, String creat_per, Date data_creacio,
-			String actualitzat_per, Date data_actualitzacio, Provincia provincia, List<Usuari> usuari,
-			List<Treballador> treballador, List<Perfil> perfil, List<Client> client) {
+			String actualitzat_per, Date data_actualitzacio, Provincia provincia, List<Usuari> usuari) {
 		this.idpk_persona = idpk_persona;
 		this.nif = nif;
 		this.nom = nom;
@@ -124,13 +127,6 @@ public class Persona {
 		this.data_actualitzacio = data_actualitzacio;
 		this.provincia = provincia;
 		this.usuari = usuari;
-		this.treballador = treballador;
-		this.perfil = perfil;
-		this.client = client;
-	}
-
-	public Long getIdpk_persona() {
-		return idpk_persona;
 	}
 
 	public void setIdpk_persona(Long idpk_persona) {

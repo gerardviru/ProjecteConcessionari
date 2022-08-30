@@ -1,6 +1,10 @@
 package com.api.concessionari.security;
 
-import static com.api.concessionari.security.Constants.*;
+import static com.api.concessionari.security.Constants.HEADER_AUTHORIZACION_KEY;
+import static com.api.concessionari.security.Constants.ISSUER_INFO;
+import static com.api.concessionari.security.Constants.SUPER_SECRET_KEY;
+import static com.api.concessionari.security.Constants.TOKEN_BEARER_PREFIX;
+import static com.api.concessionari.security.Constants.TOKEN_EXPIRATION_TIME;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,11 +25,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.api.concessionari.dto.Usuari;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-	
+
 	private AuthenticationManager authenticationManager;
 
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
@@ -39,6 +44,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			Usuari credenciales = new ObjectMapper().readValue(request.getInputStream(), Usuari.class);
 
 			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+					//credenciales.getUsername(), credenciales.getPassword(), credenciales.getAuthorities()));
 					credenciales.getUsername(), credenciales.getPassword(), new ArrayList<>()));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -48,9 +54,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication auth) throws IOException, ServletException {
-		String comillas = "\"";
-
-		// Generate token
+		
 		String token = Jwts.builder().setIssuedAt(new Date()).setIssuer(ISSUER_INFO)
 				.setSubject(((User)auth.getPrincipal()).getUsername())
 				.claim("roles", auth.getAuthorities().iterator().next().getAuthority())
@@ -60,8 +64,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		response.getWriter().write("{\"token\": \"" + token + "\"}");//devuelve token por body
 		System.out.println(response.getHeader(HEADER_AUTHORIZACION_KEY));
 		System.out.println("AUTHENTICACION");
-	
-
 	}
-
+	
+	
+	
 }

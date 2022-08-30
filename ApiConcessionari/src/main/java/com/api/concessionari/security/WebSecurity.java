@@ -1,8 +1,16 @@
 package com.api.concessionari.security;
 
 import static com.api.concessionari.security.Constants.LOGIN_URL;
+import static com.api.concessionari.security.Constants.SWAGGER_RESOURCES;
+import static com.api.concessionari.security.Constants.SWAGGER_UI_HTML;
+import static com.api.concessionari.security.Constants.SWAGGER_API_DOCS;
+import static com.api.concessionari.security.Constants.SWAGGER_UI;
+import static com.api.concessionari.security.Constants.SWAGGER_WEBJARS;
+
 import java.util.Arrays;
+
 import javax.servlet.Filter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,8 +61,12 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests()
 			.antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
+			.antMatchers(SWAGGER_RESOURCES).permitAll()
+			.antMatchers(SWAGGER_UI_HTML).permitAll()
+			.antMatchers(SWAGGER_API_DOCS).permitAll()
+			.antMatchers(SWAGGER_UI).permitAll()
+			.antMatchers(SWAGGER_WEBJARS).permitAll()
 			.anyRequest().authenticated()
-//			.anyRequest().permitAll()
 //			.anyRequest().hasAuthority("ROLE_ADMIN")
 			.and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))

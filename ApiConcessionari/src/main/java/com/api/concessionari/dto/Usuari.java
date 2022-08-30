@@ -25,8 +25,6 @@ public class Usuari implements UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="idpk_usuari", nullable = false)
 	private Long idpk_usuari;
 		
 	@Column(name="username", nullable = false)
@@ -35,7 +33,7 @@ public class Usuari implements UserDetails {
 	@Column(name="password", nullable = false)
 	private String password;
 	
-	@Column(name="rol")
+	@Column(name="rol", nullable = false)
 	private String rol;
 	
 	@Column(name="intents", nullable = false)
@@ -197,25 +195,25 @@ public class Usuari implements UserDetails {
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	

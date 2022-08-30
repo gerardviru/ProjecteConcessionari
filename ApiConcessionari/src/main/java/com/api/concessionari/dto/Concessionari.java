@@ -30,8 +30,8 @@ public class Concessionari {
 	@Column(name="cif", nullable = false)
 	private String cif;
 		
-	@Column(name="cintnom")
-	private String cintnom;
+	@Column(name="nom")
+	private String nom;
 		
 	@Column (name = "telefon", nullable = false)
 	private String telefon;
@@ -97,13 +97,13 @@ public class Concessionari {
 	 */
 	
 	
-	public Concessionari(Long idpk_con, String cif, String cintnom, String telefon, String email, String adreça,
+	public Concessionari(Long idpk_con, String cif, String nom, String telefon, String email, String adreça,
 			Integer codi_postal, String creat_per, Date data_creacio, String actualitzat_per,
 			Date data_actualitzacio, Provincia provincia, List<Stock> stock, List<Venta> venta,
 			List<Treballador> treballador, List<Client> client) {
 		this.idpk_con = idpk_con;
 		this.cif = cif;
-		this.cintnom = cintnom;
+		this.nom = nom;
 		this.telefon = telefon;
 		this.email = email;
 		this.adreça = adreça;
@@ -135,12 +135,12 @@ public class Concessionari {
 		this.cif = cif;
 	}
 
-	public String getCintnom() {
-		return cintnom;
+	public String getNom() {
+		return nom;
 	}
 
-	public void setCintnom(String cintnom) {
-		this.cintnom = cintnom;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	public String getTelefon() {
