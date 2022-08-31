@@ -42,6 +42,7 @@ public class ProvinciaServiceImpl implements IProvinciaService{
 	@Override
 	public void deleteProvincia(Long IDPK_PROV) {
 		// TODO Auto-generated method stub
+		iprovinciaDAO.deleteById(IDPK_PROV);
 		
 	}
 

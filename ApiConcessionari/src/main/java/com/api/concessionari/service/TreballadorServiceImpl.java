@@ -42,6 +42,7 @@ public class TreballadorServiceImpl implements ITreballadorService{
 	@Override
 	public void deleteTreballador(Long IDPK_TREB) {
 		// TODO Auto-generated method stub
+		iTreballadorDAO.deleteById(IDPK_TREB);
 		
 	}
 

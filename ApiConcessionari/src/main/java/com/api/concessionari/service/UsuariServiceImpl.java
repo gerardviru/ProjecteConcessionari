@@ -31,24 +31,25 @@ public class UsuariServiceImpl implements IUsuariService,UserDetailsService {
 	@Override
 	public Usuari saveUsuari(Usuari usuari) {
 		// TODO Auto-generated method stub
-		return null;
+		return iUsuariDAO.save(usuari);
 	}
 
 	@Override
 	public Usuari getById(Long IDPK_USUARI) {
 		// TODO Auto-generated method stub
-		return null;
+		return iUsuariDAO.findById(IDPK_USUARI).get();
 	}
 
 	@Override
 	public Usuari updateUsuari(Usuari usuari) {
 		// TODO Auto-generated method stub
-		return null;
+		return iUsuariDAO.save(usuari);
 	}
 
 	@Override
 	public void deleteUsuari(Long IDPK_USUARI) {
 		// TODO Auto-generated method stub
+		iUsuariDAO.deleteById(IDPK_USUARI);
 		
 	}
 	

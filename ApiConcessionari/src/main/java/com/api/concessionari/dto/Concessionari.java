@@ -94,11 +94,10 @@ public class Concessionari {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	
 	public Concessionari(Long idpk_con, String cif, String nom, String telefon, String email, String adreça,
-			Integer codi_postal, String creat_per, Date data_creacio, String actualitzat_per,
-			Date data_actualitzacio, Provincia provincia, List<Stock> stock, List<Venta> venta,
-			List<Treballador> treballador, List<Client> client) {
+			Integer codi_postal, String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio,
+			List<Stock> stock, List<Venta> venta, List<Treballador> treballador,
+			List<Client> client) {
 		this.idpk_con = idpk_con;
 		this.cif = cif;
 		this.nom = nom;
@@ -110,16 +109,17 @@ public class Concessionari {
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
 		this.data_actualitzacio = data_actualitzacio;
-		this.provincia = provincia;
 		this.stock = stock;
 		this.venta = venta;
 		this.treballador = treballador;
 		this.client = client;
 	}
+	
 
 	public Long getIdpk_con() {
 		return idpk_con;
 	}
+
 
 	public void setIdpk_con(Long idpk_con) {
 		this.idpk_con = idpk_con;

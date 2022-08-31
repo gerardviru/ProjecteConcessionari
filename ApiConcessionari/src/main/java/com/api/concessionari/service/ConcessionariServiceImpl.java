@@ -40,8 +40,9 @@ public class ConcessionariServiceImpl implements IConcessionariService {
 	}
 
 	@Override
-	public void deleteConcessionari(Long IDPK_CON) {
+	public void deleteConcessionari(Long idpk_con) {
 		// TODO Auto-generated method stub
+		iConcessionariDAO.deleteById(idpk_con);
 		
 	}
 

@@ -2,6 +2,7 @@ package com.api.concessionari.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +42,7 @@ import com.api.concessionari.service.ProvinciaServiceImpl;
 	
 	// Add Provincia
 	@PostMapping("/provincia")
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public Provincia addNewProvincia(@RequestBody Provincia provincia) {
 		return provinciaServiceImpl.saveProvincia(provincia);
 	}
@@ -61,6 +63,14 @@ import com.api.concessionari.service.ProvinciaServiceImpl;
 		}
 		if(provincia.getConcessionari() != null) {
 			provincia_seleccionada.setConcessionari(provincia.getConcessionari());			
+		}
+		
+		if(provincia.getCreat_per() != null) {
+			provincia_seleccionada.setCreat_per(provincia.getCreat_per());			
+		}
+		
+		if(provincia.getActualitzat_per() != null) {
+			provincia_seleccionada.setActualitzat_per(provincia.getActualitzat_per());			
 		}
 
 		provincia_actualizada = provinciaServiceImpl.updateProvincia(provincia_seleccionada);

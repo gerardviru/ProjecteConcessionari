@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.api.concessionari.dao.IUsuariDAO;
@@ -21,6 +22,8 @@ import com.api.concessionari.service.UsuariServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@RequestMapping("/api")
+
 public class UsuariController {
 
 	
@@ -56,25 +59,22 @@ public class UsuariController {
 	
 
 	@PostMapping("/usuari")
-	public Usuari salvarGcon_tb_usuario(@RequestBody Usuari usuario) {
-		usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
-		usuariDAO.save(usuario);
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+	public Usuari saveUsuari(@RequestBody Usuari usuari) {
+		usuari.setPassword(bCryptPasswordEncoder.encode(usuari.getPassword()));
+		usuariDAO.save(usuari);
 		
-		return usuario;
+		return usuariServiceImpl.saveUsuari(usuari);
 	}
 	
 	
 	@GetMapping("/usuari/{id}")
 	public Usuari gcon_tb_usuari(@PathVariable(name="id") Long idpk_usuari) {
 		
-		
 		Usuari usuari= new Usuari();
-		
 		usuari=usuariServiceImpl.getById(idpk_usuari);
 		
-				//System.out.println("Gcon_tb_usuario XID: "+Gcon_tb_usuario_xid);
-		
-		return usuari;
+		return usuariServiceImpl.getById(idpk_usuari);
 	}
 	
 	@PutMapping("/usuario/{id}")

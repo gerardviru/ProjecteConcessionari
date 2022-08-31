@@ -41,6 +41,7 @@ public class PersonaServiceImpl implements IPersonaService{
 	@Override
 	public void deletePersona(Long IDPK_PERSONA) {
 		// TODO Auto-generated method stub
+		iPersonaDAO.deleteById(IDPK_PERSONA);
 		
 	}
 	

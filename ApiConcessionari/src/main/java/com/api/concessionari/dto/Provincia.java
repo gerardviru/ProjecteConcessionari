@@ -22,6 +22,7 @@ public class Provincia {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Long idpk_prov;
 	
 	@Column(name="codi_prov", nullable = false)
@@ -51,6 +52,7 @@ public class Provincia {
 	private List<Persona> persona;
 	
 	
+
 	public Provincia() {
 	}
 
@@ -82,7 +84,6 @@ public class Provincia {
 	public Long getIdpk_prov() {
 		return idpk_prov;
 	}
-
 
 	public void setIdpk_prov(Long idpk_prov) {
 		this.idpk_prov = idpk_prov;

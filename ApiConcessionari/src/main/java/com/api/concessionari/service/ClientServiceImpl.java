@@ -40,6 +40,7 @@ public class ClientServiceImpl implements IClientService{
 	@Override
 	public void deleteClient(Long IDPK_CLIENT) {
 		// TODO Auto-generated method stub
+		iClientDAO.deleteById(IDPK_CLIENT);
 		
 	}
 
