@@ -77,6 +77,15 @@ public class UsuariController {
 		return usuariServiceImpl.getById(idpk_usuari);
 	}
 	
+	
+	@GetMapping("/usuari/username/{username}")
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER','GUESS')")
+	public Usuari gcon_tb_usuari(@PathVariable(name="username") String username) {
+		return usuariServiceImpl.findByUsername(username);
+	}
+	
+	
+	
 	@PutMapping("/usuario/{id}")
 	public Usuari actualizarGcon_tb_usuario(@PathVariable(name="id")Long idpk_usuari,@RequestBody Usuari usuari) {
 		

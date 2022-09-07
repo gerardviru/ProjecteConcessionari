@@ -62,6 +62,12 @@ public class UsuariServiceImpl implements IUsuariService,UserDetailsService {
 
 		return new User(usuario.getUsername(), usuario.getPassword(), usuario.getAuthorities());
 	}
+
+	@Override
+	public Usuari findByUsername(String username) {
+		// TODO Auto-generated method stub
+		return iUsuariDAO.findByUsername(username);
+	}
 	
 
 	

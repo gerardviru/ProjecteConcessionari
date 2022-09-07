@@ -25,4 +25,6 @@ public interface IUsuariService {
 	//Elimina la reserva
 	public void deleteUsuari(Long IDPK_USUARI);
 	
+	public Usuari findByUsername(String username);
+	
 }
