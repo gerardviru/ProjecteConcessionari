@@ -86,7 +86,8 @@ public class UsuariController {
 	
 	
 	
-	@PutMapping("/usuario/{id}")
+	@PutMapping("/usuari/{id}")
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER','GUESS')")
 	public Usuari actualizarGcon_tb_usuario(@PathVariable(name="id")Long idpk_usuari,@RequestBody Usuari usuari) {
 		
 		Usuari usuario_seleccionado= new Usuari();
@@ -94,9 +95,15 @@ public class UsuariController {
 		
 		usuario_seleccionado= usuariServiceImpl.getById(idpk_usuari);
 		
-		usuario_seleccionado.setUsername(usuari.getUsername());
-		usuario_seleccionado.setPassword(usuari.getPassword());
-		usuario_seleccionado.setRol(usuari.getRol());
+		usuario_seleccionado.setUsername(usuari.getUsername()==null?usuario_seleccionado.getUsername():usuari.getUsername());
+		usuario_seleccionado.setPassword(usuari.getPassword()==null?usuario_seleccionado.getPassword():usuari.getPassword());
+		usuario_seleccionado.setIntents(usuari.getIntents());
+		usuario_seleccionado.setBloquejat(usuari.getBloquejat()==null?usuario_seleccionado.getBloquejat():usuari.getBloquejat());
+		usuario_seleccionado.setActualitzat_per(usuari.getActualitzat_per()==null?usuario_seleccionado.getActualitzat_per():usuari.getActualitzat_per());
+		usuario_seleccionado.setCreat_per(usuari.getCreat_per()==null?usuario_seleccionado.getCreat_per():usuari.getCreat_per());
+		usuario_seleccionado.setData_creacio(usuari.getData_creacio()==null?usuario_seleccionado.getData_creacio():usuari.getData_creacio());
+		usuario_seleccionado.setData_actualitzacio(usuari.getData_actualitzacio()==null?usuario_seleccionado.getData_actualitzacio():usuari.getData_actualitzacio());
+		usuario_seleccionado.setRol(usuari.getRol()==null?usuario_seleccionado.getRol():usuari.getRol());
 		
 	
 		usuario_actualizado = usuariServiceImpl.updateUsuari(usuario_seleccionado);

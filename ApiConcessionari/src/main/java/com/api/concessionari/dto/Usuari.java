@@ -23,7 +23,7 @@
 		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idpk_usuari;
+	private long idpk_usuari;
 	 
 	@Column(name="username")
 	private String username;
@@ -66,7 +66,7 @@
 	public Usuari() {
 	}
 	
-	public Usuari(int idpk_usuari, String username, String password, String rol, Integer intents, String bloquejat,
+	public Usuari(Long idpk_usuari, String username, String password, String rol, Integer intents, String bloquejat,
 			String creat_per, Date data_creacio, String actualitzat_per, Date data_actualitzacio, Persona persona) {
 		this.idpk_usuari = idpk_usuari;
 		this.username = username;
@@ -82,7 +82,7 @@
 	}
 	
 
-	public int getIdpk_usuari() {
+	public Long getIdpk_usuari() {
 		return idpk_usuari;
 	}
 	
