@@ -28,8 +28,8 @@ public class Provincia {
 	@Column(name="codi_prov", nullable = false)
 	private String codi_prov;
 		
-	@Column(name="nom_prov", nullable = false)
-	private String nom_prov;
+	@Column(name="nom", nullable = false)
+	private String nom;
 	
 	@Column (name = "create_per")
 	private String creat_per;
@@ -67,11 +67,11 @@ public class Provincia {
 	 * @param DATA_ACTUALITZACIO
 	 */
 	
-	public Provincia(Long idpk_prov, String codi_prov, String nom_prov, String creat_per, Date data_creacio,
+	public Provincia(Long idpk_prov, String codi_prov, String nom, String creat_per, Date data_creacio,
 			String actualitzat_per, Date data_actualitzacio, List<Concessionari> concessionari, List<Persona> persona) {
 		this.idpk_prov = idpk_prov;
 		this.codi_prov = codi_prov;
-		this.nom_prov = nom_prov;
+		this.nom = nom;
 		this.creat_per = creat_per;
 		this.data_creacio = data_creacio;
 		this.actualitzat_per = actualitzat_per;
@@ -100,13 +100,13 @@ public class Provincia {
 	}
 
 
-	public String getNom_prov() {
-		return nom_prov;
+	public String getNom() {
+		return nom;
 	}
 
 
-	public void setNom_prov(String nom_prov) {
-		this.nom_prov = nom_prov;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 

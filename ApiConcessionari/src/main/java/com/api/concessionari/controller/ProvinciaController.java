@@ -58,8 +58,8 @@ import com.api.concessionari.service.ProvinciaServiceImpl;
 
 		provincia_seleccionada = provinciaServiceImpl.getById(idpk_prov);
 
-		if(provincia.getNom_prov()!= null) {
-			provincia_seleccionada.setNom_prov(provincia.getNom_prov());			
+		if(provincia.getNom()!= null) {
+			provincia_seleccionada.setNom(provincia.getNom());			
 		}
 		if(provincia.getConcessionari() != null) {
 			provincia_seleccionada.setConcessionari(provincia.getConcessionari());			
