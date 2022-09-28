@@ -38,6 +38,11 @@ import com.api.concessionari.service.ProvinciaServiceImpl;
 	public Provincia listarPorId(@PathVariable(name = "id") Long idpk_prov) {
 		return provinciaServiceImpl.getById(idpk_prov);
 	}
+	
+	@GetMapping("/provincia/nom/{id}")
+	public Provincia findByNom(@PathVariable(name = "id") String nom) {
+		return provinciaServiceImpl.getByNom(nom);
+	}
 
 	
 	// Add Provincia

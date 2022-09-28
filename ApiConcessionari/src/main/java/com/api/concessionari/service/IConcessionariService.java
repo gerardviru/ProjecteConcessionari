@@ -20,4 +20,6 @@ public interface IConcessionariService {
 
 		// Delete
 		public void deleteConcessionari(Long idpk_con);
+		
+		public Concessionari deleteCon(String nom);
 }

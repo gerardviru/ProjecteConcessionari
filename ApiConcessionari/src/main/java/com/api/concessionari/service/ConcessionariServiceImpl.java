@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.api.concessionari.dao.IConcessionariDAO;
 import com.api.concessionari.dto.Concessionari;
+import com.api.concessionari.dto.Provincia;
 
 @Service
 public class ConcessionariServiceImpl implements IConcessionariService {
@@ -25,6 +26,10 @@ public class ConcessionariServiceImpl implements IConcessionariService {
 	public Concessionari getById(Long IDPK_CON) {
 		// TODO Auto-generated method stub
 		return iConcessionariDAO.findById(IDPK_CON).get();
+	}
+	
+	public Concessionari getByNom(String nom) {
+		return iConcessionariDAO.findByNom(nom);
 	}
 
 	@Override
@@ -45,5 +50,9 @@ public class ConcessionariServiceImpl implements IConcessionariService {
 		iConcessionariDAO.deleteById(idpk_con);
 		
 	}
-
+	
+	@Override
+	public Concessionari deleteCon(String nom) {
+		return iConcessionariDAO.deleteByNom(nom);
+	}
 }

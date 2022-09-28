@@ -47,7 +47,9 @@ public class ProvinciaServiceImpl implements IProvinciaService{
 	}
 
 
-	
+	public Provincia getByNom(String nom) {
+		return iprovinciaDAO.findByNom(nom);
+	}
 
 	
 

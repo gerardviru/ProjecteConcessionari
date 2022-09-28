@@ -1,6 +1,7 @@
 package com.api.concessionari.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.concessionari.dto.Persona;
+import com.api.concessionari.dto.Provincia;
 import com.api.concessionari.service.PersonaServiceImpl;
+import com.api.concessionari.service.ProvinciaServiceImpl;
 
 
 @RestController
@@ -21,6 +24,9 @@ public class PersonaController {
 
 	@Autowired
 	PersonaServiceImpl personaServiceImpl;
+	
+	@Autowired
+	ProvinciaServiceImpl provinciaServiceImpl;
 	
 	
 	public PersonaController() {
@@ -37,11 +43,23 @@ public class PersonaController {
 	public Persona getById(@PathVariable(name = "id") Long idpk_persona) {
 		return personaServiceImpl.getById(idpk_persona);
 	}
-
+	
+	//Get persona by Nom
+	@GetMapping("/persona/nom/{nom}")
+	public Persona findByNom(@PathVariable(name = "nom") String nom) {
+		return personaServiceImpl.getByNom(nom);
+	}
+	
 	
 	// Add Persona
 	@PostMapping("/persona")
 	public Persona savePersona(@RequestBody Persona persona) {
+
+		Provincia novaprovincia = new Provincia();
+	
+		novaprovincia = provinciaServiceImpl.getByNom(persona.getProvincia().getNom());
+		persona.setProvincia(novaprovincia);
+		
 		return personaServiceImpl.savePersona(persona);
 	}
 	
@@ -65,8 +83,8 @@ public class PersonaController {
 		if(persona.getNom()!= null) {
 			persona_seleccionada.setNom(persona.getNom());			
 		}
-		if(persona.getAdreça() != null) {
-			persona_seleccionada.setAdreça(persona.getAdreça());			
+		if(persona.getAdreca() != null) {
+			persona_seleccionada.setAdreca(persona.getAdreca());			
 		}
 
 		persona_actualizada = personaServiceImpl.updatePersona(persona_seleccionada);

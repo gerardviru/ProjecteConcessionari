@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -43,11 +44,14 @@ public class Persona {
 	@Column (name = "email")
 	private String email;
 	
-	@Column (name = "adreça")
-	private String adreça;
+	@Column (name = "adreca")
+	private String adreca;
 
 	@Column (name = "codi_postal")
 	private Integer codi_postal;
+	
+	@Column (name = "tipo_persona")
+	private String tipo_persona;
 	
 	@Column (name = "creat_per")
 	private String creat_per;
@@ -65,6 +69,10 @@ public class Persona {
 	@ManyToOne
 	@JoinColumn(name = "idfk_prov")
 	private Provincia provincia;
+	
+	@OneToOne
+	@JoinColumn(name="idfk_con")
+	private Concessionari concessionari;
 
 	@OneToMany
 	@JoinColumn(name = "idfk_persona")
@@ -144,12 +152,12 @@ public class Persona {
 		this.email = email;
 	}
 
-	public String getAdreça() {
-		return adreça;
+	public String getAdreca() {
+		return adreca;
 	}
 
-	public void setAdreça(String adreça) {
-		this.adreça = adreça;
+	public void setAdreca(String adreça) {
+		this.adreca = adreça;
 	}
 
 	public Integer getCodi_postal() {
@@ -158,6 +166,14 @@ public class Persona {
 
 	public void setCodi_postal(Integer codi_postal) {
 		this.codi_postal = codi_postal;
+	}
+	
+	public String getTipo_persona() {
+		return tipo_persona;
+	}
+
+	public void setTipo_persona(String tipo_persona) {
+		this.tipo_persona = tipo_persona;
 	}
 
 	public String getCreat_per() {
@@ -198,6 +214,14 @@ public class Persona {
 
 	public void setProvincia(Provincia provincia) {
 		this.provincia = provincia;
+	}
+	
+	public Concessionari getConcessionari() {
+		return concessionari;
+	}
+
+	public void setConcessionari(Concessionari concessionari) {
+		this.concessionari = concessionari;
 	}
 
 	@JsonIgnore

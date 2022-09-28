@@ -63,6 +63,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests()
 			.antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
+			.antMatchers(HttpMethod.POST, "/api/persona").permitAll()
 			.antMatchers(SWAGGER_RESOURCES).permitAll()
 			.antMatchers(SWAGGER_UI_HTML).permitAll()
 			.antMatchers(SWAGGER_API_DOCS).permitAll()

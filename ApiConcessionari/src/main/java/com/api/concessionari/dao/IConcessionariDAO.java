@@ -5,5 +5,6 @@ import com.api.concessionari.dto.Concessionari;
 
 public interface IConcessionariDAO extends JpaRepository<Concessionari, Long> {
 
-	
+	public Concessionari findByNom(String nom);
+	public Concessionari deleteByNom(String nom);
 }
